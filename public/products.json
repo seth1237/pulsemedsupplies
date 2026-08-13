@@ -1,0 +1,220 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Professional Wheelchair",
+      "department": "Triage & Emergency",
+      "description": "Adult/Kids folding wheelchair with desk-length arms and swing-away footrests",
+      "specs": "Frame: Folding steel/aluminum. Weight Capacity: 100-120kg (adult). Features: Desk-length arms, swing-away footrests, rear-wheel locks, solid/pneumatic tires.",
+      "image": "/products/wheelchair.png"
+    },
+    {
+      "id": 2,
+      "name": "Pulse Oximeter",
+      "department": "Triage & Emergency",
+      "description": "Digital oxygen saturation monitor with LED display for accurate readings",
+      "specs": "Digital oxygen saturation monitor with LED display for accurate readings",
+      "image": "/products/oxygen-meter.png"
+    },
+    {
+      "id": 3,
+      "name": "Digital Thermometer",
+      "department": "Triage & Emergency",
+      "description": "Fast, accurate temperature measurement with memory function",
+      "specs": "Fast, accurate temperature measurement with memory function",
+      "image": "/products/thermometer.png"
+    },
+    {
+      "id": 4,
+      "name": "Blood Pressure Monitor",
+      "department": "Triage & Emergency",
+      "description": "Automatic digital monitor with large display and irregular heartbeat detection",
+      "specs": "Automatic digital monitor with large display and irregular heartbeat detection",
+      "image": "/products/blood-pressure.png"
+    },
+    {
+      "id": 5,
+      "name": "Digital Stethoscope",
+      "department": "Triage & Emergency",
+      "description": "Professional stainless steel stethoscope with superior acoustic quality",
+      "specs": "Professional stainless steel stethoscope with superior acoustic quality",
+      "image": "/products/stethoscope.png"
+    },
+    {
+      "id": 6,
+      "name": "Hospital Bed",
+      "department": "ICU Setup",
+      "description": "Electric adjustable medical bed with safety rails and mattress included",
+      "specs": "5-Crank ICU Bed Electric - Functions: Backrest, Knee rest, Height adjust, Trendelenburg/Reverse, Chair mode. Material: ABS head/foot board, SS frame. Safety: Side rails, 4 brakes.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 7,
+      "name": "Blood Gas & Chemistry Analyser",
+      "department": "Laboratory Set Up",
+      "description": "Edan i15 - Parameters: pH, pCO2, pO2, Na+, K+, Ca++, Cl-, Glu, Lac, Hct",
+      "specs": "Parameters: pH, pCO2, pO2, Na+, K+, Ca++, Cl-, Glu, Lac, Hct. Test Speed: <60 seconds per sample. Sample Type: Whole blood (arterial/venous/capillary). Cartridge Life: 30 days or 200 tests.",
+      "image": ""
+    },
+    {
+      "id": 8,
+      "name": "Full Hematology Analyser",
+      "department": "Laboratory Set Up",
+      "description": "URIT H30 - 3-Part or 5-Part Differential with 21-34 parameters",
+      "specs": "Type: 3-Part Differential (if URIT-3000Plus) or 5-Part (if BH-5390). Throughput: 60 T/H. Parameters: 21-34 parameters + 3 histograms. Sample Volume: Micro sample (8.5µL for whole blood). Storage: 100,000 results.",
+      "image": ""
+    },
+    {
+      "id": 9,
+      "name": "Semi Auto Hematology Analyser",
+      "department": "Laboratory Set Up",
+      "description": "URIT H50 - 3-Part Differential with 21 parameters",
+      "specs": "Type: 3-Part Differential. Throughput: 30-42 T/H. Parameters: 21 parameters + 3 histograms (RBC, WBC, PLT). Sample Volume: 10-20µL (capillary/venous). Display: LCD Touch Screen. Principle: Electrical Impedance.",
+      "image": ""
+    },
+    {
+      "id": 10,
+      "name": "Microscope",
+      "department": "Laboratory Set Up",
+      "description": "Olympus CX23 - Binocular with LED illumination and infinity corrected optical system",
+      "specs": "Type: Binocular, LED illumination. Optical System: Infinity Corrected (UIS2). Magnification: 40x – 1000x (4x, 10x, 40x, 100x oil). Head: 30° inclined, rotatable 360°. Focus: Coaxial coarse & fine (fine accuracy 2.5µm).",
+      "image": ""
+    },
+    {
+      "id": 11,
+      "name": "Lab Stool",
+      "department": "Laboratory Set Up",
+      "description": "Hydraulic/pneumatic height adjustment with backrest and PU leather",
+      "specs": "Type: Hydraulic/pneumatic height adjustment. Material: PU leather, chrome base. Features: 360° swivel, backrest support, foot ring.",
+      "image": ""
+    },
+    {
+      "id": 12,
+      "name": "Autoclave 15L",
+      "department": "Laboratory Set Up",
+      "description": "Vertical/Tabletop manual autoclave with stainless steel chamber",
+      "specs": "Type: Vertical / Tabletop, Manual. Max Temp/Pressure: 121°C - 126°C / 0.14 - 0.16 MPa. Timer: 0-60 min. Material: Stainless Steel chamber. Safety: Overheat & dry-burn protection.",
+      "image": ""
+    },
+    {
+      "id": 13,
+      "name": "Autoclave 50L",
+      "department": "Laboratory Set Up",
+      "description": "Vertical digital automatic autoclave with full stainless steel construction",
+      "specs": "Type: Vertical, Digital/Automatic. Max Temp/Pressure: 134°C / 0.22 MPa. Features: Digital display, auto shut-off, safety lock. Material: Full stainless steel.",
+      "image": ""
+    },
+    {
+      "id": 14,
+      "name": "Vital Sign Monitor",
+      "department": "Triage & Emergency",
+      "description": "Edan iM3 - Parameters: NIBP, HR, SpO2, Temp, Respiration with high-res color display",
+      "specs": "Parameters: NIBP, HR, SpO2, Temp, Respiration. Screen: 8.4 inch High-res color TFT. Battery: Built-in rechargeable (4+ hours). Alarms: Visual & audible for adult/pediatric.",
+      "image": ""
+    },
+    {
+      "id": 15,
+      "name": "Defibrillator",
+      "department": "Triage & Emergency",
+      "description": "Biphasic AED or Manual with 7\" ECG display and adjustable energy",
+      "specs": "Type: Biphasic (AED or Manual). Energy: 2-200J (adjustable). Screen: 7\" color ECG display. Features: ECG monitoring, paddle/pad adult, battery life >3 hours.",
+      "image": ""
+    },
+    {
+      "id": 16,
+      "name": "Oxygen Concentrator 5L",
+      "department": "Triage & Emergency",
+      "description": "Adjustable flow rate 0-5 L/min with 93% oxygen purity",
+      "specs": "Flow Rate: 0-5 L/min (adjustable). Oxygen Purity: 93% ±3%. Sound Level: <45 dB. Features: Nebulizer port, alarm for low purity/power failure.",
+      "image": ""
+    },
+    {
+      "id": 17,
+      "name": "Nebulizer",
+      "department": "Triage & Emergency",
+      "description": "HEMC Model compressor nebulizer with 6-8ml reservoir",
+      "specs": "Type: Compressor. Particle Size: MMAD 3-5µm. Nebulization Rate: >0.2 ml/min. Reservoir: 6-8ml.",
+      "image": ""
+    },
+    {
+      "id": 18,
+      "name": "Patient Monitor V6",
+      "department": "ICU Setup",
+      "description": "EEG Spec with ECG, Resp, NIBP, SpO2, Temp, 2-channel EEG and 12.1\" touchscreen",
+      "specs": "Parameters: ECG, Resp, NIBP, SpO2, Temp, 2-channel EEG, EtCO2 (optional). Screen: 12.1\" Touchscreen. Battery: 4+ hours. Data Export: USB/LAN.",
+      "image": ""
+    },
+    {
+      "id": 19,
+      "name": "Ventilator VG70",
+      "department": "ICU Setup",
+      "description": "Aeonmed ICU Ventilator with invasive & non-invasive modes",
+      "specs": "Type: ICU Ventilator (Invasive & Non-invasive). Modes: VC-V, PC-V, PSV, CPAP, SIMV. Screen: 12\" Touchscreen. Tidal Volume: 20-2000ml. Features: Hot swap battery, inspired O2 monitoring.",
+      "image": ""
+    },
+    {
+      "id": 20,
+      "name": "Syringe Pump",
+      "department": "ICU Setup",
+      "description": "P600 Biolight - Single or Double channel with flow rate 0.1-400 ml/h",
+      "specs": "Channels: Single or Double. Syringe Size: 10ml, 20ml, 30ml, 50ml. Flow Rate: 0.1 ml/h to 400 ml/h. Accuracy: ±2%. Anti-bolus: Yes.",
+      "image": ""
+    },
+    {
+      "id": 21,
+      "name": "Infusion Pump",
+      "department": "ICU Setup",
+      "description": "P500 Biolight - Volumetric pump with flow rate 1-1200 ml/h",
+      "specs": "Type: Volumetric. Flow Rate: 1 ml/h to 1200 ml/h. VTBI: 0.1 ml to 9999 ml. Air Detector: Ultrasonic (<50µl). Occlusion Alarm: Yes.",
+      "image": ""
+    },
+    {
+      "id": 22,
+      "name": "ECG Machine",
+      "department": "ICU Setup",
+      "description": "Edan SE-1200 - 12 Channels simultaneous with 7\" color LCD and 10,000+ ECG storage",
+      "specs": "Channels: 12 Channels (simultaneous). Screen: 7\" Color LCD. Filters: AC, Muscle, Drift. Storage: 10,000+ ECGs. Portable: Rechargeable battery, carry handle.",
+      "image": ""
+    },
+    {
+      "id": 23,
+      "name": "Ultrasound Trolley U2",
+      "department": "Radiology Department",
+      "description": "3 probes (Convex, Linear, Phased array) with 15\" HD LED screen",
+      "specs": "Probes: Convex, Linear, Phased array (Cardiac). Screen: 15\" HD LED. Modes: 2D, M, Color Doppler, PW, CW. Ports: USB, HDMI, DICOM 3.0. Battery: 4+ hours.",
+      "image": ""
+    },
+    {
+      "id": 24,
+      "name": "X-ray Digital PLX5600",
+      "department": "Radiology Department",
+      "description": "Digital Radiography with 17x17\" wireless flat panel detector",
+      "specs": "Type: Digital Radiography (Flat Panel Detector). Detector: 17x17\" Wireless/Portable. Power: 50kW (or higher). Workstation: Image stitching, AEC, DICOM storage/print. Stand: U-Arm or Ceiling mounted.",
+      "image": ""
+    },
+    {
+      "id": 25,
+      "name": "Dental Chair YD-A5",
+      "department": "Dental Setup",
+      "description": "With integrated compressor and LED operatory light",
+      "specs": "Material: PU leather, seamless. Movement: 2-3 program positions, adjustable headrest/armrest. Compressor: Dry type (Oil-free), 50L tank included. Light: LED operatory light.",
+      "image": ""
+    },
+    {
+      "id": 26,
+      "name": "Dental X-ray",
+      "department": "Dental Setup",
+      "description": "Wall mounted intraoral digital or film x-ray with articulating arm",
+      "specs": "Type: Intraoral (Digital or Film). kVp: 60-70 kVp. mA: 2-8 mA. Exposure Time: 0.01-2.0 seconds. Arm: Articulating, 360° rotation.",
+      "image": ""
+    },
+    {
+      "id": 27,
+      "name": "Autoclave 35L",
+      "department": "Dental Setup",
+      "description": "All American gravity autoclave with cast aluminum chamber",
+      "specs": "Type: Gravity (Electric or Gas). Chamber: Cast aluminum (Non-rusting). Pressure: 15-20 PSI. Temp: 121-126°C. Features: Simple dial operation, no electronics to break.",
+      "image": ""
+    }
+  ]
+}

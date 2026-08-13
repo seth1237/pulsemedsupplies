@@ -1,0 +1,269 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-display);
+  --font-sans: var(--font-body), 'Plus Jakarta Sans Fallback';
+  --font-display: var(--font-display), 'Sora Fallback';
+  --font-mono: var(--font-body), 'Plus Jakarta Sans Fallback';
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Brand — preserved exactly */
+  --primary: #feae03;
+  --primary-foreground: #0f172a;
+  --secondary: #05afed;
+  --secondary-foreground: #ffffff;
+
+  /* Neutrals — clinical, premium */
+  --background: #f7f9fc;
+  --foreground: #0f172a;
+  --ink: #0b1220;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --muted: #eef3f8;
+  --muted-foreground: #5b6b7c;
+  --accent: #05afed;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #d8e2ec;
+  --input: #ffffff;
+  --ring: #05afed;
+  --chart-1: #feae03;
+  --chart-2: #05afed;
+  --chart-3: #0f172a;
+  --chart-4: #f8c06b;
+  --chart-5: #e6f4ff;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #feae03;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #05afed;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #d8e2ec;
+  --sidebar-ring: #05afed;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[#eef3f8] text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 100% -10%, rgb(5 175 237 / 0.07), transparent),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgb(254 174 3 / 0.05), transparent);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgb(5 175 237 / 0.2);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .surface-grid {
+    background-image:
+      linear-gradient(to right, rgb(15 23 42 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 23 42 / 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease both;
+  }
+
+  .animate-rise {
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-hero-progress {
+    animation: hero-progress linear forwards;
+  }
+
+  /* Soft neumorphism — tuned to Pulsemed neutrals */
+  .neu-surface {
+    background: #eef3f8;
+    box-shadow:
+      8px 8px 16px rgb(163 177 198 / 0.35),
+      -8px -8px 16px rgb(255 255 255 / 0.9);
+  }
+
+  .neu-btn {
+    background: #eef3f8;
+    color: #5b6b7c;
+    border: none;
+    box-shadow:
+      5px 5px 10px rgb(163 177 198 / 0.4),
+      -5px -5px 10px rgb(255 255 255 / 0.95);
+    transition:
+      box-shadow 0.25s ease,
+      color 0.25s ease,
+      transform 0.2s ease;
+  }
+
+  .neu-btn:hover {
+    color: #0b1220;
+    box-shadow:
+      3px 3px 8px rgb(163 177 198 / 0.35),
+      -3px -3px 8px rgb(255 255 255 / 0.95);
+  }
+
+  .neu-btn:active,
+  .neu-btn-active {
+    color: #0b1220;
+    box-shadow:
+      inset 4px 4px 8px rgb(163 177 198 / 0.45),
+      inset -4px -4px 8px rgb(255 255 255 / 0.9);
+  }
+
+  .neu-btn-accent {
+    background: linear-gradient(145deg, #06b8f7, #0499d4);
+    color: #ffffff;
+    border: none;
+    box-shadow:
+      5px 5px 12px rgb(5 175 237 / 0.35),
+      -3px -3px 8px rgb(255 255 255 / 0.7),
+      inset 0 1px 0 rgb(255 255 255 / 0.25);
+  }
+
+  .neu-btn-accent:hover {
+    background: linear-gradient(145deg, #18c0fa, #05afed);
+  }
+
+  .neu-btn-gold {
+    background: linear-gradient(145deg, #ffb91a, #e89f00);
+    color: #0b1220;
+    border: none;
+    box-shadow:
+      5px 5px 12px rgb(254 174 3 / 0.35),
+      -3px -3px 8px rgb(255 255 255 / 0.7),
+      inset 0 1px 0 rgb(255 255 255 / 0.35);
+  }
+
+  .neu-input {
+    background: #eef3f8;
+    border: none;
+    box-shadow:
+      inset 4px 4px 8px rgb(163 177 198 / 0.35),
+      inset -4px -4px 8px rgb(255 255 255 / 0.9);
+  }
+
+  .neu-input:focus {
+    outline: none;
+    box-shadow:
+      inset 5px 5px 10px rgb(163 177 198 / 0.4),
+      inset -5px -5px 10px rgb(255 255 255 / 0.95),
+      0 0 0 3px rgb(5 175 237 / 0.15);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
