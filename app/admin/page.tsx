@@ -2,13 +2,14 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { isAdminLoggedIn } from '@/lib/admin-config'
 
 export default function AdminPage() {
   const router = useRouter()
 
   useEffect(() => {
     const token = localStorage.getItem('admin_token')
-    if (token) {
+    if (isAdminLoggedIn(token)) {
       router.push('/admin/dashboard')
     } else {
       router.push('/admin/login')

@@ -17,8 +17,13 @@ export function getErpOrgId(): string | null {
   return orgId || null
 }
 
+/** When CATALOG_SOURCE=local, the site uses public/products.json instead of ERP. */
+export function useLocalCatalog(): boolean {
+  return (process.env.CATALOG_SOURCE || '').trim().toLowerCase() === 'local'
+}
+
 export function isErpConfigured(): boolean {
-  return Boolean(getErpOrgId())
+  return Boolean(getErpOrgId()) && !useLocalCatalog()
 }
 
 export const ERP_ORG_ID_HEADER = 'X-Org-Id'

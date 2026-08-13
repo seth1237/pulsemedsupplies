@@ -18,16 +18,20 @@ import { Clock3, Mail, MessageCircle, Phone } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'Do you offer bulk discounts?',
-    a: 'Yes. We provide competitive pricing for bulk orders. Contact sales for a custom quote.',
+    q: 'Do you supply laboratory equipment in Kenya?',
+    a: 'Yes. Laboratory setup is our focus — analysers, microscopes, autoclaves, and related consumables for Kenyan hospitals and diagnostic centres.',
   },
   {
-    q: 'What is your delivery timeframe?',
-    a: 'Standard delivery is typically 5–7 business days. Rush options are available for urgent needs.',
+    q: 'Do you offer bulk discounts?',
+    a: 'Yes. We provide competitive pricing for bulk and tender orders. Contact sales for a custom quote.',
+  },
+  {
+    q: 'What is your delivery timeframe in Kenya?',
+    a: 'Standard delivery within Kenya is typically 5–7 business days. Rush options are available for urgent laboratory needs.',
   },
   {
     q: 'Do you provide installation service?',
-    a: 'Yes. We offer professional installation and training for most equipment. Additional fees may apply.',
+    a: 'Yes. We offer professional installation, commissioning, and training for laboratory and clinical equipment. Additional fees may apply.',
   },
   {
     q: 'What warranty do you offer?',
@@ -62,11 +66,11 @@ export default function Contact() {
                 PULSEMED
               </p>
               <h1 className="max-w-4xl font-display text-4xl font-semibold tracking-tight text-ink text-balance sm:text-5xl">
-                Talk with our team
+                Talk with our Kenya team
               </h1>
               <p className="mt-4 max-w-3xl text-base text-muted-foreground sm:text-lg">
-                Inquiries, equipment consultations, installation support, or partnership conversations —
-                we are ready to help.
+                Laboratory setups, equipment quotes, installation, or partnership conversations —
+                we support hospitals and diagnostic labs across Kenya.
               </p>
             </div>
           </Container>

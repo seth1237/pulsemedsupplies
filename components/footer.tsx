@@ -13,16 +13,17 @@ import {
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
+  { href: '/products?department=lab', label: 'Lab Equipment' },
+  { href: '/products', label: 'Catalogue' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 
 const services = [
+  'Laboratory Setup',
   'Equipment Supply',
   'Installation & Commissioning',
   'Preventive Maintenance',
-  'Biomedical Support',
 ]
 
 export default function Footer() {
@@ -37,8 +38,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/70">
-              Healthcare technology partner for medical equipment supply, installation, commissioning,
-              and biomedical engineering support across East Africa.
+              Laboratory and medical equipment supplier for hospitals and diagnostic centres in Kenya.
+              Installation, commissioning, and biomedical support from Nairobi.
             </p>
             <div className="mt-6 space-y-2 text-sm">
               <a
@@ -89,15 +90,21 @@ export default function Footer() {
               Regions
             </h4>
             <ul className="space-y-3 text-sm text-white/75">
-              <li>Kenya</li>
+              <li>Kenya (Nairobi)</li>
               <li>Uganda</li>
               <li>Tanzania</li>
             </ul>
             <a
+              href="https://www.pulsemedsolutionslimited.co.ke/"
+              className="mt-6 block text-sm text-white/75 transition hover:text-primary"
+            >
+              pulsemedsolutionslimited.co.ke
+            </a>
+            <a
               href="https://www.facebook.com/profile.php?id=61590708625873"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block text-sm text-white/75 transition hover:text-primary"
+              className="mt-2 inline-block text-sm text-white/75 transition hover:text-primary"
             >
               Facebook
             </a>

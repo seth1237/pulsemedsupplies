@@ -6,6 +6,16 @@ import { cn } from '@/lib/utils'
 
 const slides = [
   {
+    src: '/products/thermometer.png',
+    alt: 'Laboratory diagnostics equipment',
+    label: 'Laboratory · Kenya',
+  },
+  {
+    src: '/products/oxygen-meter.png',
+    alt: 'Clinical analyser and monitoring',
+    label: 'Lab Diagnostics',
+  },
+  {
     src: '/products/hospital-bed.png',
     alt: 'ICU hospital bed',
     label: 'ICU Setup',
@@ -24,16 +34,6 @@ const slides = [
     src: '/products/stethoscope.png',
     alt: 'Digital stethoscope',
     label: 'Clinical Assessment',
-  },
-  {
-    src: '/products/oxygen-meter.png',
-    alt: 'Pulse oximeter',
-    label: 'Vital Signs',
-  },
-  {
-    src: '/products/thermometer.png',
-    alt: 'Digital thermometer',
-    label: 'Diagnostics',
   },
 ]
 

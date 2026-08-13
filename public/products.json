@@ -51,58 +51,58 @@
     {
       "id": 7,
       "name": "Blood Gas & Chemistry Analyser",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "Edan i15 - Parameters: pH, pCO2, pO2, Na+, K+, Ca++, Cl-, Glu, Lac, Hct",
       "specs": "Parameters: pH, pCO2, pO2, Na+, K+, Ca++, Cl-, Glu, Lac, Hct. Test Speed: <60 seconds per sample. Sample Type: Whole blood (arterial/venous/capillary). Cartridge Life: 30 days or 200 tests.",
-      "image": ""
+      "image": "/products/cards/7.png"
     },
     {
       "id": 8,
       "name": "Full Hematology Analyser",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "URIT H30 - 3-Part or 5-Part Differential with 21-34 parameters",
       "specs": "Type: 3-Part Differential (if URIT-3000Plus) or 5-Part (if BH-5390). Throughput: 60 T/H. Parameters: 21-34 parameters + 3 histograms. Sample Volume: Micro sample (8.5µL for whole blood). Storage: 100,000 results.",
-      "image": ""
+      "image": "/products/cards/8.png"
     },
     {
       "id": 9,
       "name": "Semi Auto Hematology Analyser",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "URIT H50 - 3-Part Differential with 21 parameters",
       "specs": "Type: 3-Part Differential. Throughput: 30-42 T/H. Parameters: 21 parameters + 3 histograms (RBC, WBC, PLT). Sample Volume: 10-20µL (capillary/venous). Display: LCD Touch Screen. Principle: Electrical Impedance.",
-      "image": ""
+      "image": "/products/cards/9.png"
     },
     {
       "id": 10,
       "name": "Microscope",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "Olympus CX23 - Binocular with LED illumination and infinity corrected optical system",
       "specs": "Type: Binocular, LED illumination. Optical System: Infinity Corrected (UIS2). Magnification: 40x – 1000x (4x, 10x, 40x, 100x oil). Head: 30° inclined, rotatable 360°. Focus: Coaxial coarse & fine (fine accuracy 2.5µm).",
-      "image": ""
+      "image": "/products/cards/10.png"
     },
     {
       "id": 11,
       "name": "Lab Stool",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "Hydraulic/pneumatic height adjustment with backrest and PU leather",
       "specs": "Type: Hydraulic/pneumatic height adjustment. Material: PU leather, chrome base. Features: 360° swivel, backrest support, foot ring.",
-      "image": ""
+      "image": "/products/cards/11.png"
     },
     {
       "id": 12,
       "name": "Autoclave 15L",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "Vertical/Tabletop manual autoclave with stainless steel chamber",
       "specs": "Type: Vertical / Tabletop, Manual. Max Temp/Pressure: 121°C - 126°C / 0.14 - 0.16 MPa. Timer: 0-60 min. Material: Stainless Steel chamber. Safety: Overheat & dry-burn protection.",
-      "image": ""
+      "image": "/products/cards/12.png"
     },
     {
       "id": 13,
       "name": "Autoclave 50L",
-      "department": "Laboratory Set Up",
+      "department": "Laboratory Setup",
       "description": "Vertical digital automatic autoclave with full stainless steel construction",
       "specs": "Type: Vertical, Digital/Automatic. Max Temp/Pressure: 134°C / 0.22 MPa. Features: Digital display, auto shut-off, safety lock. Material: Full stainless steel.",
-      "image": ""
+      "image": "/products/cards/13.png"
     },
     {
       "id": 14,
@@ -110,7 +110,7 @@
       "department": "Triage & Emergency",
       "description": "Edan iM3 - Parameters: NIBP, HR, SpO2, Temp, Respiration with high-res color display",
       "specs": "Parameters: NIBP, HR, SpO2, Temp, Respiration. Screen: 8.4 inch High-res color TFT. Battery: Built-in rechargeable (4+ hours). Alarms: Visual & audible for adult/pediatric.",
-      "image": ""
+      "image": "/products/cards/14.png"
     },
     {
       "id": 15,
@@ -118,7 +118,7 @@
       "department": "Triage & Emergency",
       "description": "Biphasic AED or Manual with 7\" ECG display and adjustable energy",
       "specs": "Type: Biphasic (AED or Manual). Energy: 2-200J (adjustable). Screen: 7\" color ECG display. Features: ECG monitoring, paddle/pad adult, battery life >3 hours.",
-      "image": ""
+      "image": "/products/cards/15.png"
     },
     {
       "id": 16,
@@ -126,7 +126,7 @@
       "department": "Triage & Emergency",
       "description": "Adjustable flow rate 0-5 L/min with 93% oxygen purity",
       "specs": "Flow Rate: 0-5 L/min (adjustable). Oxygen Purity: 93% ±3%. Sound Level: <45 dB. Features: Nebulizer port, alarm for low purity/power failure.",
-      "image": ""
+      "image": "/products/cards/16.png"
     },
     {
       "id": 17,
@@ -134,7 +134,7 @@
       "department": "Triage & Emergency",
       "description": "HEMC Model compressor nebulizer with 6-8ml reservoir",
       "specs": "Type: Compressor. Particle Size: MMAD 3-5µm. Nebulization Rate: >0.2 ml/min. Reservoir: 6-8ml.",
-      "image": ""
+      "image": "/products/cards/17.png"
     },
     {
       "id": 18,
@@ -142,7 +142,7 @@
       "department": "ICU Setup",
       "description": "EEG Spec with ECG, Resp, NIBP, SpO2, Temp, 2-channel EEG and 12.1\" touchscreen",
       "specs": "Parameters: ECG, Resp, NIBP, SpO2, Temp, 2-channel EEG, EtCO2 (optional). Screen: 12.1\" Touchscreen. Battery: 4+ hours. Data Export: USB/LAN.",
-      "image": ""
+      "image": "/products/cards/18.png"
     },
     {
       "id": 19,
@@ -150,7 +150,7 @@
       "department": "ICU Setup",
       "description": "Aeonmed ICU Ventilator with invasive & non-invasive modes",
       "specs": "Type: ICU Ventilator (Invasive & Non-invasive). Modes: VC-V, PC-V, PSV, CPAP, SIMV. Screen: 12\" Touchscreen. Tidal Volume: 20-2000ml. Features: Hot swap battery, inspired O2 monitoring.",
-      "image": ""
+      "image": "/products/cards/19.png"
     },
     {
       "id": 20,
@@ -158,7 +158,7 @@
       "department": "ICU Setup",
       "description": "P600 Biolight - Single or Double channel with flow rate 0.1-400 ml/h",
       "specs": "Channels: Single or Double. Syringe Size: 10ml, 20ml, 30ml, 50ml. Flow Rate: 0.1 ml/h to 400 ml/h. Accuracy: ±2%. Anti-bolus: Yes.",
-      "image": ""
+      "image": "/products/cards/20.png"
     },
     {
       "id": 21,
@@ -166,7 +166,7 @@
       "department": "ICU Setup",
       "description": "P500 Biolight - Volumetric pump with flow rate 1-1200 ml/h",
       "specs": "Type: Volumetric. Flow Rate: 1 ml/h to 1200 ml/h. VTBI: 0.1 ml to 9999 ml. Air Detector: Ultrasonic (<50µl). Occlusion Alarm: Yes.",
-      "image": ""
+      "image": "/products/cards/21.png"
     },
     {
       "id": 22,
@@ -174,7 +174,7 @@
       "department": "ICU Setup",
       "description": "Edan SE-1200 - 12 Channels simultaneous with 7\" color LCD and 10,000+ ECG storage",
       "specs": "Channels: 12 Channels (simultaneous). Screen: 7\" Color LCD. Filters: AC, Muscle, Drift. Storage: 10,000+ ECGs. Portable: Rechargeable battery, carry handle.",
-      "image": ""
+      "image": "/products/cards/22.png"
     },
     {
       "id": 23,
@@ -182,7 +182,7 @@
       "department": "Radiology Department",
       "description": "3 probes (Convex, Linear, Phased array) with 15\" HD LED screen",
       "specs": "Probes: Convex, Linear, Phased array (Cardiac). Screen: 15\" HD LED. Modes: 2D, M, Color Doppler, PW, CW. Ports: USB, HDMI, DICOM 3.0. Battery: 4+ hours.",
-      "image": ""
+      "image": "/products/cards/23.png"
     },
     {
       "id": 24,
@@ -190,7 +190,7 @@
       "department": "Radiology Department",
       "description": "Digital Radiography with 17x17\" wireless flat panel detector",
       "specs": "Type: Digital Radiography (Flat Panel Detector). Detector: 17x17\" Wireless/Portable. Power: 50kW (or higher). Workstation: Image stitching, AEC, DICOM storage/print. Stand: U-Arm or Ceiling mounted.",
-      "image": ""
+      "image": "/products/cards/24.png"
     },
     {
       "id": 25,
@@ -198,7 +198,7 @@
       "department": "Dental Setup",
       "description": "With integrated compressor and LED operatory light",
       "specs": "Material: PU leather, seamless. Movement: 2-3 program positions, adjustable headrest/armrest. Compressor: Dry type (Oil-free), 50L tank included. Light: LED operatory light.",
-      "image": ""
+      "image": "/products/cards/25.png"
     },
     {
       "id": 26,
@@ -206,7 +206,7 @@
       "department": "Dental Setup",
       "description": "Wall mounted intraoral digital or film x-ray with articulating arm",
       "specs": "Type: Intraoral (Digital or Film). kVp: 60-70 kVp. mA: 2-8 mA. Exposure Time: 0.01-2.0 seconds. Arm: Articulating, 360° rotation.",
-      "image": ""
+      "image": "/products/cards/26.png"
     },
     {
       "id": 27,
@@ -214,7 +214,887 @@
       "department": "Dental Setup",
       "description": "All American gravity autoclave with cast aluminum chamber",
       "specs": "Type: Gravity (Electric or Gas). Chamber: Cast aluminum (Non-rusting). Pressure: 15-20 PSI. Temp: 121-126°C. Features: Simple dial operation, no electronics to break.",
-      "image": ""
+      "image": "/products/cards/27.png"
+    },
+    {
+      "id": 28,
+      "name": "Vital Sign Monitor Edan iM3 (Adults)",
+      "department": "Triage & Emergency",
+      "description": "Portable vital signs monitor for adult patients with comprehensive parameters",
+      "specs": "Parameters: NIBP, HR, SpO2, Temp, Respiration. Screen: Color LED display. Weight Capacity: Adult. Battery: Rechargeable, 4+ hours.",
+      "image": "/products/cards/28.png"
+    },
+    {
+      "id": 29,
+      "name": "Vital Sign Monitor Edan iM3 (Kids)",
+      "department": "Triage & Emergency",
+      "description": "Portable vital signs monitor for pediatric patients with specialized parameters",
+      "specs": "Parameters: NIBP, HR, SpO2, Temp, Respiration. Screen: Color LED display. Weight Capacity: Pediatric. Battery: Rechargeable, 4+ hours.",
+      "image": "/products/cards/29.png"
+    },
+    {
+      "id": 30,
+      "name": "Wheelchair (Adults)",
+      "department": "Triage & Emergency",
+      "description": "Heavy-duty adult wheelchair with desk-length arms and swing-away footrests",
+      "specs": "Frame: Folding steel/aluminum. Weight Capacity: 120kg. Features: Desk-length arms, swing-away footrests, rear-wheel locks.",
+      "image": "/products/wheelchair.png"
+    },
+    {
+      "id": 31,
+      "name": "Wheelchair (Kids)",
+      "department": "Triage & Emergency",
+      "description": "Specialized pediatric wheelchair with smaller frame and adjustable features",
+      "specs": "Frame: Lightweight aluminum. Weight Capacity: 60kg. Features: Adjustable footrests, rear-wheel locks, folding design.",
+      "image": "/products/wheelchair.png"
+    },
+    {
+      "id": 32,
+      "name": "Luxurious ABS Stretcher",
+      "department": "Triage & Emergency",
+      "description": "Premium ABS stretcher with smooth finish and comfortable patient support",
+      "specs": "Material: Luxurious ABS plastic. Features: Comfortable design, easy transport, durable construction.",
+      "image": "/products/cards/32.png"
+    },
+    {
+      "id": 33,
+      "name": "Stretcher Fixed Height",
+      "department": "Triage & Emergency",
+      "description": "Fixed-height medical stretcher with stability and easy maneuverability",
+      "specs": "Height: Fixed, ergonomic level. Features: Stable frame, swivel wheels, safety rails.",
+      "image": "/products/cards/33.png"
+    },
+    {
+      "id": 34,
+      "name": "Stretcher Adjustable Height",
+      "department": "Triage & Emergency",
+      "description": "Adjustable-height stretcher for variable patient transport needs",
+      "specs": "Height: Manually adjustable. Features: Height adjustment mechanism, swivel wheels, safety rails.",
+      "image": "/products/cards/34.png"
+    },
+    {
+      "id": 35,
+      "name": "Foldable Stretcher",
+      "department": "Triage & Emergency",
+      "description": "Compact foldable stretcher for emergency response and transport",
+      "specs": "Features: Compact foldable design, lightweight, portable with carry handles.",
+      "image": "/products/cards/35.png"
+    },
+    {
+      "id": 36,
+      "name": "Oxygen Set - Side Filling Cylinder",
+      "department": "Triage & Emergency",
+      "description": "Complete oxygen set with regulator, flowmeter and side-filling capability",
+      "specs": "Components: Regulator, flowmeter, side-filling cylinder connector. Oxygen Purity: 93%+. Features: Reliable flow control.",
+      "image": "/products/cards/36.png"
+    },
+    {
+      "id": 37,
+      "name": "Thermometer Contact Digital",
+      "department": "Triage & Emergency",
+      "description": "Digital contact thermometer for accurate temperature measurement",
+      "specs": "Type: Contact digital. Accuracy: ±0.1°C. Response Time: <10 seconds. Memory: Last reading storage.",
+      "image": "/products/thermometer.png"
+    },
+    {
+      "id": 38,
+      "name": "Thermometer Infrared Non-Contact",
+      "department": "Triage & Emergency",
+      "description": "Non-contact infrared thermometer for contactless temperature measurement",
+      "specs": "Type: Non-contact infrared. Range: 32-43°C. Accuracy: ±0.2°C. Response Time: <1 second. Feature: LCD display.",
+      "image": "/products/thermometer.png"
+    },
+    {
+      "id": 39,
+      "name": "Weight Scale Height & Weight Mechanical",
+      "department": "Triage & Emergency",
+      "description": "Combined mechanical scale for height and weight measurement",
+      "specs": "Type: Mechanical dual-function. Height Range: 60-210cm. Weight Range: 0-150kg. Accuracy: ±0.5kg.",
+      "image": "/products/cards/39.png"
+    },
+    {
+      "id": 40,
+      "name": "Baby Weight Scale Digital",
+      "department": "Triage & Emergency",
+      "description": "Digital scale specialized for infant weight and height measurement",
+      "specs": "Type: Digital. Weight Range: 0-50kg. Height Range: 0-100cm. Accuracy: ±0.1kg. Display: LCD.",
+      "image": "/products/cards/40.png"
+    },
+    {
+      "id": 41,
+      "name": "Stethoscope Dual Head",
+      "department": "Doctors Room",
+      "description": "Professional dual head stethoscope for comprehensive auscultation",
+      "specs": "Type: Dual head. Material: Stainless steel. Tubing: Latex-free soft. Features: High-quality acoustics.",
+      "image": "/products/stethoscope.png"
+    },
+    {
+      "id": 42,
+      "name": "Examination Light LED",
+      "department": "Doctors Room",
+      "description": "Professional LED examination light with adjustable brightness",
+      "specs": "Type: LED. Power: AC powered. Brightness: Adjustable. Features: Cool white light, flicker-free.",
+      "image": "/products/cards/42.png"
+    },
+    {
+      "id": 43,
+      "name": "Examination Light Halogen",
+      "department": "Doctors Room",
+      "description": "Halogen examination light with warm illumination",
+      "specs": "Type: Halogen. Power: AC powered. Brightness: High-intensity. Features: Warm light, durable.",
+      "image": "/products/cards/43.png"
+    },
+    {
+      "id": 44,
+      "name": "Pen Light Torch",
+      "department": "Doctors Room",
+      "description": "Compact penlight for pupil and throat examination",
+      "specs": "Type: LED penlight. Brightness: High. Features: Compact, pocket-sized, battery-powered.",
+      "image": "/products/cards/44.png"
+    },
+    {
+      "id": 45,
+      "name": "Examination Couch Stainless Steel",
+      "department": "Doctors Room",
+      "description": "Durable stainless steel examination couch with hygienic design",
+      "specs": "Material: Stainless steel. Features: Easy to clean, corrosion-resistant, sturdy.",
+      "image": "/products/cards/45.png"
+    },
+    {
+      "id": 46,
+      "name": "Examination Couch Painted",
+      "department": "Doctors Room",
+      "description": "Standard examination couch with painted finish",
+      "specs": "Material: Metal with painted finish. Features: Comfortable, durable, easy maintenance.",
+      "image": "/products/cards/46.png"
+    },
+    {
+      "id": 47,
+      "name": "Ward Screen Stainless Steel",
+      "department": "Doctors Room",
+      "description": "Stainless steel privacy screen for ward compartmentalization",
+      "specs": "Material: Stainless steel frame. Features: Durable, hygienic, mobile.",
+      "image": "/products/cards/47.png"
+    },
+    {
+      "id": 48,
+      "name": "Otoscope",
+      "department": "Doctors Room",
+      "description": "Diagnostic otoscope for ear examination",
+      "specs": "Type: LED otoscope. Features: Multiple specula sizes, bright illumination, durable construction.",
+      "image": "/products/cards/48.png"
+    },
+    {
+      "id": 49,
+      "name": "Pedal Bin 18L Plastic",
+      "department": "Doctors Room",
+      "description": "Pedal-operated waste bin in red, black and yellow options",
+      "specs": "Capacity: 18 liters. Material: Plastic. Colors: Red, Black, Yellow. Features: Hygienic pedal operation.",
+      "image": "/products/cards/49.png"
+    },
+    {
+      "id": 50,
+      "name": "Pedal Bin 12L Stainless Steel",
+      "department": "Doctors Room",
+      "description": "Stainless steel pedal waste bin for medical settings",
+      "specs": "Capacity: 12 liters. Material: Stainless steel. Features: Durable, easy to clean, hygienic.",
+      "image": "/products/cards/50.png"
+    },
+    {
+      "id": 51,
+      "name": "Instrument Trolley",
+      "department": "Doctors Room",
+      "description": "Mobile trolley for instrument and supply storage",
+      "specs": "Material: Stainless steel or metal. Features: Multiple shelves, smooth-rolling wheels, lockable.",
+      "image": "/products/cards/51.png"
+    },
+    {
+      "id": 52,
+      "name": "Universal Diagnostic Set",
+      "department": "Doctors Room",
+      "description": "Complete diagnostic set with multiple examination tools",
+      "specs": "Components: Otoscope, ophthalmoscope, thermometer, and more. Features: Comprehensive examination kit.",
+      "image": "/products/cards/52.png"
+    },
+    {
+      "id": 53,
+      "name": "X-ray Viewer Single",
+      "department": "Doctors Room",
+      "description": "Single-panel X-ray light box viewer",
+      "specs": "Panels: Single (14x14 inches). Features: Bright LED backlight, adjustable brightness, wall-mountable.",
+      "image": "/products/cards/53.png"
+    },
+    {
+      "id": 54,
+      "name": "Hospital Bed Single Crank ABS",
+      "department": "Wards",
+      "description": "Single crank hospital bed with ABS headboard and canvas mattress",
+      "specs": "Type: Single crank. Material: ABS head/foot board. Mattress: Canvas. Features: Height adjustment, side rails.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 55,
+      "name": "Hospital Bed Single Crank Kids",
+      "department": "Wards",
+      "description": "Pediatric single crank hospital bed with ABS board and canvas mattress",
+      "specs": "Type: Single crank, pediatric size. Material: ABS head/foot board. Mattress: Canvas. Features: Safety rails.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 56,
+      "name": "Hospital Bed Two Crank ABS",
+      "department": "Wards",
+      "description": "Two crank hospital bed with dual height adjustment",
+      "specs": "Type: Two crank (backrest, knee). Material: ABS. Mattress: Canvas. Functions: Backrest and knee adjustment.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 57,
+      "name": "Hospital Bed Two Crank Kids",
+      "department": "Wards",
+      "description": "Pediatric two crank hospital bed with dual adjustment",
+      "specs": "Type: Two crank, pediatric. Material: ABS. Mattress: Canvas. Functions: Backrest and knee adjustment.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 58,
+      "name": "Hospital Bed Three Crank Manual",
+      "department": "Wards",
+      "description": "Three crank manual hospital bed with comprehensive adjustment",
+      "specs": "Type: Three crank manual. Functions: Backrest, knee rest, height adjust. Material: Stainless steel frame.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 59,
+      "name": "Hospital Bed Three Crank Manual Kids",
+      "department": "Wards",
+      "description": "Pediatric three crank manual hospital bed",
+      "specs": "Type: Three crank manual, pediatric. Functions: Backrest, knee rest, height. Material: Stainless steel frame.",
+      "image": "/products/hospital-bed.png"
+    },
+    {
+      "id": 60,
+      "name": "Overhead Table Hydraulic ABS",
+      "department": "Wards",
+      "description": "Hydraulic overhead table with ABS construction",
+      "specs": "Material: ABS. Adjustment: Hydraulic. Features: Height adjustable, smooth operation, durable.",
+      "image": "/products/cards/60.png"
+    },
+    {
+      "id": 61,
+      "name": "Overhead Table Hydraulic Wooden",
+      "department": "Wards",
+      "description": "Hydraulic overhead table with wooden construction",
+      "specs": "Material: Wooden. Adjustment: Hydraulic. Features: Height adjustable, aesthetic design.",
+      "image": "/products/cards/61.png"
+    },
+    {
+      "id": 62,
+      "name": "Bedside Locker",
+      "department": "Wards",
+      "description": "Bedside storage locker for patient personal items",
+      "specs": "Material: Metal or wooden. Features: Secure storage, lockable, easy access.",
+      "image": "/products/cards/62.png"
+    },
+    {
+      "id": 63,
+      "name": "Drip Stand",
+      "department": "Wards",
+      "description": "Adjustable drip stand for IV fluid administration",
+      "specs": "Material: Stainless steel or metal. Features: Height adjustable, stable base, smooth wheels.",
+      "image": "/products/cards/63.png"
+    },
+    {
+      "id": 64,
+      "name": "Medication Trolley Luxurious",
+      "department": "Wards",
+      "description": "Premium medication trolley with multiple compartments",
+      "specs": "Material: Stainless steel. Features: Multiple shelves, lockable, smooth-rolling wheels.",
+      "image": "/products/cards/64.png"
+    },
+    {
+      "id": 65,
+      "name": "Suction Machine DFX 23",
+      "department": "Wards",
+      "description": "High-powered suction machine for airway clearance",
+      "specs": "Model: DFX 23. Power: Electric. Features: Adjustable suction, secure canisters, reliable.",
+      "image": "/products/cards/65.png"
+    },
+    {
+      "id": 66,
+      "name": "Suction Machine Sam 14",
+      "department": "Wards",
+      "description": "Medium-capacity suction machine for clinical use",
+      "specs": "Model: Sam 14. Power: Electric. Features: Durable, reliable, easy maintenance.",
+      "image": "/products/cards/66.png"
+    },
+    {
+      "id": 67,
+      "name": "Oxygen Concentrator Single Flow 8L",
+      "department": "Wards",
+      "description": "High-flow oxygen concentrator for intensive care",
+      "specs": "Flow Rate: 8 LPM. Oxygen Purity: 93%+. Features: Compact, quiet, alarm system.",
+      "image": "/products/cards/67.png"
+    },
+    {
+      "id": 68,
+      "name": "Oxygen Concentrator Single Flow 5L",
+      "department": "Wards",
+      "description": "Standard oxygen concentrator for ward use",
+      "specs": "Flow Rate: 5 LPM. Oxygen Purity: 93%+. Features: Energy efficient, quiet operation.",
+      "image": "/products/cards/68.png"
+    },
+    {
+      "id": 69,
+      "name": "Mayo Trolley",
+      "department": "Wards",
+      "description": "Sterile instrument trolley for surgical procedures",
+      "specs": "Material: Stainless steel. Features: Multiple tiers, lockable wheels, autoclavable shelves.",
+      "image": "/products/cards/69.png"
+    },
+    {
+      "id": 70,
+      "name": "Dressing Trolley",
+      "department": "Wards",
+      "description": "Mobile trolley for wound dressing and care supplies",
+      "specs": "Material: Stainless steel. Features: Multiple compartments, smooth wheels, organized layout.",
+      "image": "/products/cards/70.png"
+    },
+    {
+      "id": 71,
+      "name": "Oxygen Set",
+      "department": "Wards",
+      "description": "Complete oxygen delivery system for patient use",
+      "specs": "Components: Regulator, flowmeter, tubing. Features: Reliable, compatible with standard cylinders.",
+      "image": "/products/cards/71.png"
+    },
+    {
+      "id": 72,
+      "name": "Anaesthesia Machine Aeon 8800A",
+      "department": "Theatre Set up",
+      "description": "Premium anaesthesia machine for surgical theaters",
+      "specs": "Model: Aeon 8800A. Features: Advanced controls, integrated monitoring, comprehensive.",
+      "image": "/products/cards/72.png"
+    },
+    {
+      "id": 73,
+      "name": "Anaesthesia Machine Aeon 8300A",
+      "department": "Theatre Set up",
+      "description": "Professional anaesthesia machine for surgical theater",
+      "specs": "Model: Aeon 8300A. Features: Reliable, easy to operate, comprehensive anesthesia delivery.",
+      "image": "/products/cards/73.png"
+    },
+    {
+      "id": 74,
+      "name": "Anaesthesia Machine Aeon 7200A Full Configuration",
+      "department": "Theatre Set up",
+      "description": "Full configuration anaesthesia machine for maternity theater",
+      "specs": "Model: Aeon 7200A (Full). Features: Complete setup, advanced features, ideal for obstetrics.",
+      "image": "/products/cards/74.png"
+    },
+    {
+      "id": 75,
+      "name": "Anaesthesia Machine Aeon 7200A Basic",
+      "department": "Theatre Set up",
+      "description": "Basic configuration anaesthesia machine for maternity theater",
+      "specs": "Model: Aeon 7200A (Basic). Features: Essential functions, user-friendly, suitable for maternity.",
+      "image": "/products/cards/75.png"
+    },
+    {
+      "id": 76,
+      "name": "Anaesthesia Machine Aeon 7200",
+      "department": "Theatre Set up",
+      "description": "Standard anaesthesia machine for maternity theater",
+      "specs": "Model: Aeon 7200. Features: Reliable, standard configuration, proven performance.",
+      "image": "/products/cards/76.png"
+    },
+    {
+      "id": 77,
+      "name": "Patient Monitor Edan iM8",
+      "department": "Theatre Set up",
+      "description": "Multi-parameter patient monitor for operating theater",
+      "specs": "Parameters: ECG, NIBP, SpO2, Temp, Respiration. Screen: Color display. Features: Real-time monitoring.",
+      "image": "/products/cards/77.png"
+    },
+    {
+      "id": 78,
+      "name": "Patient Monitor Edan X10",
+      "department": "Theatre Set up",
+      "description": "Advanced patient monitor with comprehensive parameters",
+      "specs": "Parameters: Multi-parameter monitoring. Screen: Large color display. Features: Advanced analytics.",
+      "image": "/products/cards/78.png"
+    },
+    {
+      "id": 79,
+      "name": "Patient Monitor Edan X12",
+      "department": "Theatre Set up",
+      "description": "High-end patient monitor with extended capabilities",
+      "specs": "Parameters: Comprehensive multi-parameter. Screen: HD color display. Features: Advanced diagnostics.",
+      "image": "/products/cards/79.png"
+    },
+    {
+      "id": 80,
+      "name": "Operating Table Head Control",
+      "department": "Theatre Set up",
+      "description": "Operating table with head control and split-leg capability",
+      "specs": "Type: Electric head control, split legs. Features: Adjustable height, Trendelenburg, flexible positions.",
+      "image": "/products/cards/80.png"
+    },
+    {
+      "id": 81,
+      "name": "Operating Table Hydraulic",
+      "department": "Theatre Set up",
+      "description": "Hydraulic operating table for general surgical use",
+      "specs": "Type: Hydraulic. Features: Manual adjustment, stable, durable construction.",
+      "image": "/products/cards/81.png"
+    },
+    {
+      "id": 82,
+      "name": "Operating Table Electric Keling",
+      "department": "Theatre Set up",
+      "description": "Electric operating table by Keling manufacturer",
+      "specs": "Model: Keling. Type: Electric. Features: Motorized adjustment, smooth positioning.",
+      "image": "/products/cards/82.png"
+    },
+    {
+      "id": 83,
+      "name": "Operating Table Electric Aeonmed OP750",
+      "department": "Theatre Set up",
+      "description": "Low-end electric operating table by Aeonmed",
+      "specs": "Model: OP750 (Low End). Type: Electric. Features: Standard functions, reliable.",
+      "image": "/products/cards/83.png"
+    },
+    {
+      "id": 84,
+      "name": "Operating Table Electric Aeonmed OP850",
+      "department": "Theatre Set up",
+      "description": "High-end electric operating table by Aeonmed",
+      "specs": "Model: OP850/Hayer (High End). Type: Electric. Features: Advanced positioning, comprehensive controls.",
+      "image": "/products/cards/84.png"
+    },
+    {
+      "id": 85,
+      "name": "Operating Light LED Dual Arm Keling",
+      "department": "Theatre Set up",
+      "description": "Dual-arm LED operating light by Keling",
+      "specs": "Type: LED dual-arm. Features: Bright illumination, flexible positioning, flicker-free.",
+      "image": "/products/cards/85.png"
+    },
+    {
+      "id": 86,
+      "name": "Operating Light LED Single Arm Keling",
+      "department": "Theatre Set up",
+      "description": "Single-arm LED operating light by Keling",
+      "specs": "Type: LED single-arm. Features: Bright, flexible arm, reliable.",
+      "image": "/products/cards/86.png"
+    },
+    {
+      "id": 87,
+      "name": "Operating Light LED Aeonmed OL9570",
+      "department": "Theatre Set up",
+      "description": "Single-arm LED operating light by Aeonmed",
+      "specs": "Model: OL9570. Type: LED single-arm. Features: High-quality illumination.",
+      "image": "/products/cards/87.png"
+    },
+    {
+      "id": 88,
+      "name": "Operating Light LED Aeonmed OL965070",
+      "department": "Theatre Set up",
+      "description": "Dual-arm LED operating light by Aeonmed",
+      "specs": "Model: OL965070. Type: LED dual-arm. Features: Superior brightness, flexible.",
+      "image": "/products/cards/88.png"
+    },
+    {
+      "id": 89,
+      "name": "Operating Light LED Aeonmed OL968080",
+      "department": "Theatre Set up",
+      "description": "High-end dual-arm LED operating light with camera",
+      "specs": "Model: OL968080 (High End). Type: LED dual-arm. Features: Camera integration, exceptional quality.",
+      "image": "/products/cards/89.png"
+    },
+    {
+      "id": 90,
+      "name": "Single Arm Pendant CP8300",
+      "department": "Theatre Set up",
+      "description": "Single-arm surgical pendant system",
+      "specs": "Model: CP8300. Features: Flexible arm, equipment mounting, smooth operation.",
+      "image": "/products/cards/90.png"
+    },
+    {
+      "id": 91,
+      "name": "Single Arm Pendant CP8400",
+      "department": "Theatre Set up",
+      "description": "Advanced single-arm surgical pendant system",
+      "specs": "Model: CP8400. Features: Enhanced flexibility, multiple utilities, professional grade.",
+      "image": "/products/cards/91.png"
+    },
+    {
+      "id": 92,
+      "name": "Diathermy Machine 300W",
+      "department": "Theatre Set up",
+      "description": "Electrosurgical diathermy machine for surgical procedures",
+      "specs": "Power: 300 watts. Features: Reliable cutting and coagulation, safety features.",
+      "image": "/products/cards/92.png"
+    },
+    {
+      "id": 93,
+      "name": "Anesthesia Luxurious Trolley",
+      "department": "Theatre Set up",
+      "description": "Premium trolley for anesthesia equipment and supplies",
+      "specs": "Material: Stainless steel. Features: Multiple compartments, organized layout, lockable.",
+      "image": "/products/cards/93.png"
+    },
+    {
+      "id": 94,
+      "name": "Suction Machine Sam 35",
+      "department": "Theatre Set up",
+      "description": "High-capacity suction machine for operating theater",
+      "specs": "Model: Sam 35. Power: Electric. Features: High suction power, reliable, durable.",
+      "image": "/products/cards/94.png"
+    },
+    {
+      "id": 95,
+      "name": "Defibrillator DM7000",
+      "department": "Theatre Set up",
+      "description": "Advanced defibrillator for surgical theater",
+      "specs": "Model: DM7000. Type: Biphasic. Features: Advanced monitoring, reliable shock delivery.",
+      "image": "/products/cards/95.png"
+    },
+    {
+      "id": 96,
+      "name": "General Set",
+      "department": "Theatre Set up",
+      "description": "Complete general surgical instrument set",
+      "specs": "Components: Essential surgical instruments. Features: Comprehensive, stainless steel.",
+      "image": "/products/cards/96.png"
+    },
+    {
+      "id": 97,
+      "name": "Suture Set",
+      "department": "Theatre Set up",
+      "description": "Complete suture kit with various sizes and types",
+      "specs": "Components: Multiple suture sizes and materials. Features: Sterile, ready to use.",
+      "image": "/products/cards/97.png"
+    },
+    {
+      "id": 98,
+      "name": "Laryngoscope with 4 Blades",
+      "department": "Theatre Set up",
+      "description": "Complete laryngoscope with four blade sizes",
+      "specs": "Blades: 4 different sizes. Features: Clear view, durable construction, reliable.",
+      "image": "/products/cards/98.png"
+    },
+    {
+      "id": 99,
+      "name": "MVA Kit",
+      "department": "Theatre Set up",
+      "description": "Manual vacuum aspiration kit for obstetric procedures",
+      "specs": "Type: MVA kit. Components: Complete vacuum aspiration system. Features: Effective, reliable.",
+      "image": "/products/cards/99.png"
+    },
+    {
+      "id": 100,
+      "name": "Ambu Bag Adult",
+      "department": "Theatre Set up",
+      "description": "Silicone ambu bag for adult manual ventilation",
+      "specs": "Material: Silicone. Type: Adult. Features: Durable, reliable, latex-free.",
+      "image": "/products/cards/100.png"
+    },
+    {
+      "id": 101,
+      "name": "Ambu Bag Neonatal",
+      "department": "Theatre Set up",
+      "description": "Specialized ambu bag for neonatal resuscitation",
+      "specs": "Material: Silicone. Type: Neonatal. Features: Appropriate size, reliable.",
+      "image": "/products/cards/101.png"
+    },
+    {
+      "id": 102,
+      "name": "Ambu Bag Child",
+      "department": "Theatre Set up",
+      "description": "Pediatric-sized ambu bag for child resuscitation",
+      "specs": "Material: Silicone. Type: Pediatric. Features: Appropriate sizing, reliable.",
+      "image": "/products/cards/102.png"
+    },
+    {
+      "id": 103,
+      "name": "Oxygen Concentrator Theatre",
+      "department": "Theatre Set up",
+      "description": "Oxygen concentrator for operating theater use",
+      "specs": "Flow Rate: 5-8 LPM. Oxygen Purity: 93%+. Features: Reliable, quiet operation.",
+      "image": "/products/cards/103.png"
+    },
+    {
+      "id": 104,
+      "name": "Transport Ventilator",
+      "department": "Theatre Set up",
+      "description": "Portable ventilator for patient transport",
+      "specs": "Type: Transport ventilator. Features: Portable, battery-powered, reliable.",
+      "image": "/products/cards/104.png"
+    },
+    {
+      "id": 105,
+      "name": "Delivery Bed Manual",
+      "department": "Maternity and Neonatal Care",
+      "description": "Manual obstetric delivery bed for labor and delivery",
+      "specs": "Type: Manual. Features: Adjustable positions, leg support, comfortable.",
+      "image": "/products/cards/105.png"
+    },
+    {
+      "id": 106,
+      "name": "Delivery Bed Hydraulic",
+      "department": "Maternity and Neonatal Care",
+      "description": "Hydraulic delivery bed with smooth operation",
+      "specs": "Type: Hydraulic. Features: Height adjustable, smooth operation, reliable.",
+      "image": "/products/cards/106.png"
+    },
+    {
+      "id": 107,
+      "name": "Baby Bassinet",
+      "department": "Maternity and Neonatal Care",
+      "description": "Safe sleeping unit for newborn care",
+      "specs": "Features: Safe design, easy access, hygienic.",
+      "image": "/products/cards/107.png"
+    },
+    {
+      "id": 108,
+      "name": "Recovery Bed Single Crank",
+      "department": "Maternity and Neonatal Care",
+      "description": "Single crank recovery bed for post-natal care",
+      "specs": "Type: Single crank. Functions: Backrest adjustment. Features: Comfortable, durable.",
+      "image": "/products/cards/108.png"
+    },
+    {
+      "id": 109,
+      "name": "Recovery Bed Double Crank",
+      "department": "Maternity and Neonatal Care",
+      "description": "Double crank recovery bed with dual adjustment",
+      "specs": "Type: Double crank. Functions: Backrest and knee. Features: Flexible positioning.",
+      "image": "/products/cards/109.png"
+    },
+    {
+      "id": 110,
+      "name": "Incubator BB 200 Dison",
+      "department": "Maternity and Neonatal Care",
+      "description": "Advanced incubator for neonatal care",
+      "specs": "Model: BB 200 Dison. Features: Temperature control, humidity regulation, safety.",
+      "image": "/products/cards/110.png"
+    },
+    {
+      "id": 111,
+      "name": "Baby Warmer BN 100",
+      "department": "Maternity and Neonatal Care",
+      "description": "Infrared baby warmer for neonatal warming",
+      "specs": "Model: BN 100. Features: Infrared heating, temperature control, safe.",
+      "image": "/products/cards/111.png"
+    },
+    {
+      "id": 112,
+      "name": "Baby Warmer Resustaire BN 200",
+      "department": "Maternity and Neonatal Care",
+      "description": "Advanced resuscitation warmer for neonatal care",
+      "specs": "Model: BN 200. Features: Resuscitation capability, warming, safe.",
+      "image": "/products/cards/112.png"
+    },
+    {
+      "id": 113,
+      "name": "Fetal Monitor F9000 Plus Edan",
+      "department": "Maternity and Neonatal Care",
+      "description": "Advanced fetal monitor with comprehensive features",
+      "specs": "Model: F9000 Plus Edan. Features: Fetal heart rate, contraction monitoring, advanced.",
+      "image": "/products/cards/113.png"
+    },
+    {
+      "id": 114,
+      "name": "Fetal Monitor F9000 Edan",
+      "department": "Maternity and Neonatal Care",
+      "description": "Standard fetal monitor for labor monitoring",
+      "specs": "Model: F9000 Edan. Features: Fetal HR and contractions, reliable.",
+      "image": "/products/cards/114.png"
+    },
+    {
+      "id": 115,
+      "name": "Fetal Monitor F6000 Edan",
+      "department": "Maternity and Neonatal Care",
+      "description": "Mid-range fetal monitor",
+      "specs": "Model: F6000 Edan. Features: Dual channel, reliable monitoring.",
+      "image": "/products/cards/115.png"
+    },
+    {
+      "id": 116,
+      "name": "Fetal Monitor F3000 Edan",
+      "department": "Maternity and Neonatal Care",
+      "description": "Basic fetal monitor for essential monitoring",
+      "specs": "Model: F3000 Edan. Features: Essential fetal monitoring, reliable.",
+      "image": "/products/cards/116.png"
+    },
+    {
+      "id": 117,
+      "name": "Fetal Doppler Edan Sonotrax",
+      "department": "Maternity and Neonatal Care",
+      "description": "Portable fetal doppler for heart rate detection",
+      "specs": "Model: Sonotrax Edan. Features: Portable, accurate fetal HR, easy to use.",
+      "image": "/products/cards/117.png"
+    },
+    {
+      "id": 118,
+      "name": "Phototherapy Unit LED",
+      "department": "Maternity and Neonatal Care",
+      "description": "LED phototherapy unit for neonatal jaundice treatment",
+      "specs": "Type: LED. Features: Effective treatment, safe, energy efficient.",
+      "image": "/products/cards/118.png"
+    },
+    {
+      "id": 119,
+      "name": "FetalScope Plastic",
+      "department": "Maternity and Neonatal Care",
+      "description": "Plastic fetoscope for fetal heart auscultation",
+      "specs": "Material: Plastic. Features: Durable, reliable acoustics.",
+      "image": "/products/cards/119.png"
+    },
+    {
+      "id": 120,
+      "name": "FetalScope Aluminum",
+      "department": "Maternity and Neonatal Care",
+      "description": "Aluminum fetoscope for professional use",
+      "specs": "Material: Aluminum. Features: Durable, superior acoustics.",
+      "image": "/products/cards/120.png"
+    },
+    {
+      "id": 121,
+      "name": "Vacuum Extractor",
+      "department": "Maternity and Neonatal Care",
+      "description": "Vacuum extraction device for assisted delivery",
+      "specs": "Type: Vacuum extractor. Features: Safe, reliable, professional grade.",
+      "image": "/products/cards/121.png"
+    },
+    {
+      "id": 122,
+      "name": "Cesarean Set",
+      "department": "Maternity and Neonatal Care",
+      "description": "Complete surgical set for cesarean section",
+      "specs": "Components: Essential cesarean instruments. Features: Comprehensive, sterile.",
+      "image": "/products/cards/122.png"
+    },
+    {
+      "id": 123,
+      "name": "Delivery Set",
+      "department": "Maternity and Neonatal Care",
+      "description": "Complete instrument set for vaginal delivery",
+      "specs": "Components: Essential delivery instruments. Features: Complete, sterile.",
+      "image": "/products/cards/123.png"
+    },
+    {
+      "id": 124,
+      "name": "Room Heater",
+      "department": "Maternity and Neonatal Care",
+      "description": "Room heater for maintaining temperature in maternity ward",
+      "specs": "Type: Electric room heater. Features: Adjustable temperature, safe.",
+      "image": "/products/cards/124.png"
+    },
+    {
+      "id": 125,
+      "name": "Step Stool",
+      "department": "Maternity and Neonatal Care",
+      "description": "Step stool for patient access and mobility",
+      "specs": "Features: Sturdy, non-slip, safe.",
+      "image": "/products/cards/125.png"
+    },
+    {
+      "id": 126,
+      "name": "ICU Patient Monitor V5",
+      "department": "ICU Setup",
+      "description": "Multi-parameter patient monitor for ICU",
+      "specs": "Parameters: ECG, NIBP, SpO2, Temp, Respiration. Screen: Color display. Features: Reliable monitoring.",
+      "image": "/products/cards/126.png"
+    },
+    {
+      "id": 127,
+      "name": "ICU Patient Monitor V6 EEG",
+      "department": "ICU Setup",
+      "description": "Advanced ICU monitor with EEG capability",
+      "specs": "Parameters: ECG, NIBP, SpO2, Temp, Respiration, 2-channel EEG. Features: Advanced diagnostics.",
+      "image": "/products/cards/127.png"
+    },
+    {
+      "id": 128,
+      "name": "ICU Patient Monitor X12 EtCO2",
+      "department": "ICU Setup",
+      "description": "Comprehensive ICU monitor with end-tidal CO2",
+      "specs": "Parameters: Multi-parameter with EtCO2. Features: Advanced respiratory monitoring.",
+      "image": "/products/cards/128.png"
+    },
+    {
+      "id": 129,
+      "name": "Stethoscope Professional Litmanns Classic II",
+      "department": "Doctors Room",
+      "description": "Premium professional stethoscope for diagnostic excellence",
+      "specs": "Model: Littmann Classic II. Features: Superior acoustics, dual head, professional grade.",
+      "image": "/products/stethoscope.png"
+    },
+    {
+      "id": 130,
+      "name": "Examination Couch Radiology",
+      "department": "Radiology Department",
+      "description": "Specialized examination couch for radiology procedures",
+      "specs": "Material: Steel or aluminum. Features: Radiology-compatible, comfortable.",
+      "image": "/products/cards/130.png"
+    },
+    {
+      "id": 131,
+      "name": "Ultrasound Gel 5L",
+      "department": "Radiology Department",
+      "description": "5-liter bottle of ultrasound coupling gel",
+      "specs": "Quantity: 5 liters. Type: Ultrasound gel. Features: Sterile, hypoallergenic.",
+      "image": "/products/cards/131.png"
+    },
+    {
+      "id": 132,
+      "name": "X-ray Viewer Double",
+      "department": "Radiology Department",
+      "description": "Double-panel X-ray light box viewer",
+      "specs": "Panels: Double (28x14 inches total). Features: Bright LED backlight, wall-mountable.",
+      "image": "/products/cards/132.png"
+    },
+    {
+      "id": 133,
+      "name": "Blood Pressure Monitor Digital",
+      "department": "Triage & Emergency",
+      "description": "Automatic digital blood pressure monitor with memory",
+      "specs": "Type: Digital automatic. Features: Large LCD display, heartbeat detector, memory function.",
+      "image": "/products/blood-pressure.png"
+    },
+    {
+      "id": 134,
+      "name": "Blood Pressure Monitor Mercury",
+      "department": "Triage & Emergency",
+      "description": "Traditional mercury sphygmomanometer",
+      "specs": "Type: Mercury. Features: Accurate, reliable, professional standard.",
+      "image": "/products/blood-pressure.png"
+    },
+    {
+      "id": 135,
+      "name": "Blood Pressure Monitor Precision",
+      "department": "Triage & Emergency",
+      "description": "High-precision blood pressure monitor",
+      "specs": "Type: Precision digital. Features: Highly accurate, advanced algorithms.",
+      "image": "/products/blood-pressure.png"
+    },
+    {
+      "id": 136,
+      "name": "Ambu Bag Adult Silicone",
+      "department": "Triage & Emergency",
+      "description": "Silicone ambu bag for adult resuscitation",
+      "specs": "Material: Silicone. Type: Adult. Features: Durable, latex-free, reliable.",
+      "image": "/products/cards/136.png"
+    },
+    {
+      "id": 137,
+      "name": "Ambu Bag Child Silicone",
+      "department": "Triage & Emergency",
+      "description": "Silicone ambu bag for pediatric resuscitation",
+      "specs": "Material: Silicone. Type: Child. Features: Appropriate size, latex-free.",
+      "image": "/products/cards/137.png"
     }
   ]
 }

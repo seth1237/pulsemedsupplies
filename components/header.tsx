@@ -12,10 +12,19 @@ import { ArrowUpRight, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
+  { href: '/products?department=lab', label: 'Lab Equipment' },
+  { href: '/products', label: 'Catalogue' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
+
+function isNavActive(pathname: string, href: string) {
+  const pathOnly = href.split('?')[0]
+  if (pathOnly === '/') return pathname === '/'
+  if (href.includes('department=lab')) return pathname === '/products'
+  if (pathOnly === '/products') return pathname.startsWith('/products/')
+  return pathname === pathOnly || pathname.startsWith(`${pathOnly}/`)
+}
 
 export default function Header() {
   const pathname = usePathname()
@@ -67,10 +76,7 @@ export default function Header() {
 
             <div className="hidden items-center gap-1 rounded-2xl bg-white/80 p-1.5 shadow-sm lg:flex">
               {navLinks.map((link) => {
-                const active =
-                  link.href === '/'
-                    ? pathname === '/'
-                    : pathname === link.href || pathname.startsWith(`${link.href}/`)
+                const active = isNavActive(pathname, link.href)
                 return (
                   <Link
                     key={link.href}
@@ -169,10 +175,7 @@ export default function Header() {
             </p>
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => {
-                const active =
-                  link.href === '/'
-                    ? pathname === '/'
-                    : pathname === link.href || pathname.startsWith(`${link.href}/`)
+                const active = isNavActive(pathname, link.href)
                 return (
                   <Link
                     key={link.href}

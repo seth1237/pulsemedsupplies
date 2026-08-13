@@ -47,7 +47,7 @@ export default function FacilitiesCarousel() {
         <SectionHeading
           eyebrow="Trusted partners"
           title="Supporting leading healthcare facilities"
-          description="Hospitals, diagnostic centres, and care networks across Kenya, Uganda, and Tanzania."
+          description="Kenyan hospitals and diagnostic laboratories we support — plus regional partners in Uganda and Tanzania."
           align="center"
           className="mx-auto"
         />

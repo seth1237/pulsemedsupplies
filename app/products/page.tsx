@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Container from '@/components/container'
@@ -14,10 +15,18 @@ import {
   type Product,
   type ProductCategory,
 } from '@/lib/products'
+import {
+  isLabDepartment,
+  matchesDepartmentFilter,
+  sortDepartmentsLabFirst,
+  sortProductsLabFirst,
+} from '@/lib/site'
 import { MessageCircle, Search, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function ProductsPage() {
+  const searchParams = useSearchParams()
+  const departmentParam = searchParams.get('department') || ''
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<ProductCategory[]>([])
   const [loading, setLoading] = useState(true)
@@ -32,7 +41,7 @@ export default function ProductsPage() {
           fetchProducts(),
           fetchCategories(),
         ])
-        setProducts(productData)
+        setProducts(sortProductsLabFirst(productData))
         setCategories(categoryData)
       } catch (error) {
         console.error('Error loading products:', error)
@@ -43,11 +52,28 @@ export default function ProductsPage() {
     load()
   }, [])
 
-  const departments = useMemo(() => {
-    const fromCategories = categories.map((category) => category.name)
-    const fromProducts = products.map((product) => product.department)
-    return ['All', ...Array.from(new Set([...fromCategories, ...fromProducts].filter(Boolean)))]
-  }, [categories, products])
+  useEffect(() => {
+    if (!departmentParam) return
+    const names = [
+      ...categories.map((category) => category.name),
+      ...products.map((product) => product.department),
+    ]
+    const match = names.find((name) => matchesDepartmentFilter(name, departmentParam))
+    if (match) {
+      setSelectedDept(match)
+    } else if (departmentParam.toLowerCase() === 'lab' || departmentParam.toLowerCase() === 'laboratory') {
+      const labName = names.find((name) => isLabDepartment(name))
+      if (labName) setSelectedDept(labName)
+    }
+  }, [departmentParam, categories, products])
+
+  const departments = useMemo(
+    () => ['All', ...sortDepartmentsLabFirst([
+      ...categories.map((category) => category.name),
+      ...products.map((product) => product.department),
+    ])],
+    [categories, products],
+  )
 
   const counts = useMemo(() => {
     const map: Record<string, number> = { All: products.length }
@@ -88,11 +114,11 @@ export default function ProductsPage() {
                 PULSEMED
               </p>
               <h1 className="max-w-4xl font-display text-3xl font-semibold tracking-tight text-ink text-balance sm:text-4xl lg:text-5xl">
-                Medical equipment catalogue
+                Laboratory and medical equipment for Kenya
               </h1>
               <p className="mt-4 max-w-3xl text-base text-muted-foreground sm:text-lg">
-                Browse triage, laboratory, ICU, dental, and radiology solutions selected for clinical
-                environments across East Africa.
+                Start with the lab — analysers, microscopes, and autoclaves for Kenyan hospitals and
+                diagnostic centres — then browse ICU, triage, dental, and radiology.
               </p>
             </div>
           </Container>
@@ -223,7 +249,8 @@ export default function ProductsPage() {
                         Need help choosing equipment?
                       </p>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        Our team can recommend the right setup for your department.
+                        Our Nairobi team can specify a laboratory setup or supporting clinical equipment
+                        for your Kenyan facility.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-3">

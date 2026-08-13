@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Container from '@/components/container'
@@ -18,23 +19,12 @@ import {
 import { cn } from '@/lib/utils'
 import { ArrowLeft, Mail, MessageCircle } from 'lucide-react'
 
-interface ProductDetailPageProps {
-  params: Promise<{ id: string }>
-}
-
-export default function ProductDetail({ params }: ProductDetailPageProps) {
-  const [id, setId] = useState('')
+export default function ProductDetail() {
+  const params = useParams()
+  const id = typeof params.id === 'string' ? params.id : ''
   const [product, setProduct] = useState<Product | null>(null)
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const initPage = async () => {
-      const { id: resolvedId } = await params
-      setId(resolvedId)
-    }
-    initPage()
-  }, [params])
 
   useEffect(() => {
     if (!id) return

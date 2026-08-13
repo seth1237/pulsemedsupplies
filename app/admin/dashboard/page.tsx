@@ -1,16 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Container from '@/components/container'
+import { isAdminLoggedIn } from '@/lib/admin-config'
 import { fetchProducts, LOGO_URL, type Product } from '@/lib/products'
 import { cn } from '@/lib/utils'
-import { Pencil, X } from 'lucide-react'
+import { ImagePlus, Pencil, Upload, X } from 'lucide-react'
+
+function adminHeaders(): HeadersInit {
+  const token = localStorage.getItem('admin_token') || ''
+  return { Authorization: `Bearer ${token}` }
+}
 
 export default function AdminDashboard() {
   const router = useRouter()
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const [products, setProducts] = useState<Product[]>([])
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
   const [departments, setDepartments] = useState<string[]>([])
@@ -18,10 +25,15 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editFormData, setEditFormData] = useState<Partial<Product>>({})
+  const [saving, setSaving] = useState(false)
+  const [uploadingId, setUploadingId] = useState<string | null>(null)
+  const [status, setStatus] = useState('')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const token = localStorage.getItem('admin_token')
-    if (!token) {
+    if (!isAdminLoggedIn(token)) {
+      localStorage.removeItem('admin_token')
       router.push('/admin/login')
       return
     }
@@ -29,14 +41,19 @@ export default function AdminDashboard() {
     loadProducts()
   }, [router])
 
+  const applyFilter = (list: Product[], dept: string) => {
+    setFilteredProducts(dept === 'All' ? list : list.filter((p) => p.department === dept))
+  }
+
   const loadProducts = async () => {
     try {
       const data = await fetchProducts()
       setProducts(data)
-      setFilteredProducts(data)
+      applyFilter(data, selectedDept)
       setDepartments(['All', ...Array.from(new Set(data.map((p) => p.department)))])
-    } catch (error) {
-      console.error('Error loading products:', error)
+    } catch (loadError) {
+      console.error('Error loading products:', loadError)
+      setError('Could not load products')
     } finally {
       setLoading(false)
     }
@@ -44,31 +61,84 @@ export default function AdminDashboard() {
 
   const handleDepartmentFilter = (dept: string) => {
     setSelectedDept(dept)
-    if (dept === 'All') {
-      setFilteredProducts(products)
-    } else {
-      setFilteredProducts(products.filter((p) => p.department === dept))
+    applyFilter(products, dept)
+  }
+
+  const replaceProduct = (updated: Product) => {
+    const next = products.map((p) => (p.id === updated.id ? updated : p))
+    setProducts(next)
+    applyFilter(next, selectedDept)
+    if (editingId === updated.id) {
+      setEditFormData(updated)
     }
   }
 
   const handleEditClick = (product: Product) => {
     setEditingId(product.id)
     setEditFormData(product)
+    setError('')
+    setStatus('')
   }
 
-  const handleSaveEdit = () => {
-    if (editingId !== null) {
-      const updatedProducts = products.map((p) =>
-        p.id === editingId ? { ...p, ...editFormData } : p,
-      )
-      setProducts(updatedProducts)
-      setFilteredProducts(
-        selectedDept === 'All'
-          ? updatedProducts
-          : updatedProducts.filter((p) => p.department === selectedDept),
-      )
+  const handleSaveEdit = async () => {
+    if (editingId === null) return
+    setSaving(true)
+    setError('')
+    try {
+      const response = await fetch(`/api/admin/products/${encodeURIComponent(editingId)}`, {
+        method: 'PUT',
+        headers: {
+          ...adminHeaders(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: editFormData.name,
+          description: editFormData.description,
+          specs: editFormData.specs,
+          department: editFormData.department,
+          image: editFormData.image,
+        }),
+      })
+      const payload = await response.json()
+      if (!response.ok) {
+        throw new Error(payload.error || 'Save failed')
+      }
+      replaceProduct(payload.product)
+      setStatus('Product saved')
       setEditingId(null)
-      setEditFormData({})
+    } catch (saveError) {
+      setError(saveError instanceof Error ? saveError.message : 'Save failed')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const handleUpload = async (productId: string, file: File) => {
+    setUploadingId(productId)
+    setError('')
+    setStatus('')
+    try {
+      const body = new FormData()
+      body.append('file', file)
+      const response = await fetch(`/api/admin/products/${encodeURIComponent(productId)}/image`, {
+        method: 'POST',
+        headers: adminHeaders(),
+        body,
+      })
+      const payload = await response.json()
+      if (!response.ok) {
+        throw new Error(payload.error || 'Upload failed')
+      }
+      replaceProduct({
+        ...payload.product,
+        image: String(payload.product.image).split('?')[0],
+      })
+      setStatus('Image uploaded to /public/products/uploads')
+    } catch (uploadError) {
+      setError(uploadError instanceof Error ? uploadError.message : 'Upload failed')
+    } finally {
+      setUploadingId(null)
+      if (fileInputRef.current) fileInputRef.current.value = ''
     }
   }
 
@@ -76,6 +146,8 @@ export default function AdminDashboard() {
     localStorage.removeItem('admin_token')
     router.push('/admin/login')
   }
+
+  const missingImages = products.filter((p) => !p.image || p.image.includes('/cards/')).length
 
   if (loading) {
     return (
@@ -95,7 +167,7 @@ export default function AdminDashboard() {
             </div>
             <span className="hidden h-5 w-px bg-[#d8e2ec] sm:block" />
             <h1 className="font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
-              Admin Dashboard
+              Catalogue admin
             </h1>
           </div>
           <Button onClick={handleLogout} variant="outline" size="sm">
@@ -105,14 +177,22 @@ export default function AdminDashboard() {
       </header>
 
       <Container className="py-8 sm:py-10">
+        {status ? (
+          <p className="mb-4 rounded-xl bg-secondary/10 px-4 py-3 text-sm font-medium text-secondary">
+            {status}
+          </p>
+        ) : null}
+        {error ? (
+          <p className="mb-4 rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">
+            {error}
+          </p>
+        ) : null}
+
         <div className="mb-8 grid gap-4 sm:grid-cols-3">
           {[
             { label: 'Total Products', value: products.length },
             { label: 'Departments', value: Math.max(departments.length - 1, 0) },
-            {
-              label: 'With Images',
-              value: products.filter((p) => p.image).length,
-            },
+            { label: 'Need photo', value: missingImages },
           ].map((stat) => (
             <div key={stat.label} className="neu-surface rounded-2xl p-5">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -146,7 +226,7 @@ export default function AdminDashboard() {
 
         <div className="neu-surface overflow-hidden rounded-2xl">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[640px]">
+            <table className="w-full min-w-[720px]">
               <thead>
                 <tr className="border-b border-[#d8e2ec] text-left">
                   <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -169,24 +249,58 @@ export default function AdminDashboard() {
                     key={product.id}
                     className="border-b border-[#d8e2ec] last:border-b-0 transition hover:bg-white/40"
                   >
-                    <td className="px-5 py-4 text-sm font-medium text-ink">{product.name}</td>
+                    <td className="px-5 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="relative size-12 overflow-hidden rounded-lg bg-[#e4ebf3]">
+                          {product.image ? (
+                            <Image
+                              src={product.image}
+                              alt=""
+                              fill
+                              className="object-cover"
+                              sizes="48px"
+                            />
+                          ) : null}
+                        </div>
+                        <span className="text-sm font-medium text-ink">{product.name}</span>
+                      </div>
+                    </td>
                     <td className="px-5 py-4 text-sm text-muted-foreground">{product.department}</td>
                     <td className="px-5 py-4 text-sm">
-                      {product.image ? (
+                      {product.image && !product.image.includes('/cards/') ? (
                         <span className="neu-btn inline-flex rounded-lg px-2.5 py-1 text-xs font-semibold text-secondary">
-                          Available
+                          Photo
                         </span>
                       ) : (
                         <span className="neu-btn inline-flex rounded-lg px-2.5 py-1 text-xs font-semibold text-muted-foreground">
-                          Missing
+                          Placeholder
                         </span>
                       )}
                     </td>
                     <td className="px-5 py-4">
-                      <Button onClick={() => handleEditClick(product)} variant="outline" size="sm">
-                        <Pencil className="size-3.5" />
-                        Edit
-                      </Button>
+                      <div className="flex flex-wrap gap-2">
+                        <label className="inline-flex">
+                          <input
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp,image/gif"
+                            className="sr-only"
+                            disabled={uploadingId === product.id}
+                            onChange={(event) => {
+                              const file = event.target.files?.[0]
+                              if (file) void handleUpload(product.id, file)
+                              event.target.value = ''
+                            }}
+                          />
+                          <span className="neu-btn inline-flex cursor-pointer items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold">
+                            <Upload className="size-3.5" />
+                            {uploadingId === product.id ? 'Uploading…' : 'Photo'}
+                          </span>
+                        </label>
+                        <Button onClick={() => handleEditClick(product)} variant="outline" size="sm">
+                          <Pencil className="size-3.5" />
+                          Edit
+                        </Button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -214,6 +328,39 @@ export default function AdminDashboard() {
             </div>
 
             <div className="space-y-5 p-6">
+              <div className="overflow-hidden rounded-2xl bg-[#e4ebf3]">
+                <div className="relative aspect-[4/3]">
+                  {editFormData.image ? (
+                    <Image
+                      src={editFormData.image}
+                      alt={editFormData.name || 'Product'}
+                      fill
+                      className="object-cover"
+                      sizes="640px"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+                      No image yet
+                    </div>
+                  )}
+                </div>
+                <label className="flex cursor-pointer items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-ink hover:bg-white/50">
+                  <ImagePlus className="size-4" />
+                  {uploadingId === editingId ? 'Uploading…' : 'Upload new photo'}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    className="sr-only"
+                    disabled={uploadingId === editingId}
+                    onChange={(event) => {
+                      const file = event.target.files?.[0]
+                      if (file && editingId) void handleUpload(editingId, file)
+                    }}
+                  />
+                </label>
+              </div>
+
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-ink">Product name</span>
                 <input
@@ -246,21 +393,14 @@ export default function AdminDashboard() {
                 />
               </label>
 
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-ink">Image path</span>
-                <input
-                  type="text"
-                  value={editFormData.image || ''}
-                  onChange={(e) => setEditFormData({ ...editFormData, image: e.target.value })}
-                  placeholder="/products/image-name.png"
-                  className="neu-input w-full rounded-xl px-4 py-3 text-sm text-ink"
-                />
-                <p className="mt-2 text-xs text-muted-foreground">Example: /products/device.png</p>
-              </label>
+              <p className="text-xs text-muted-foreground">
+                Photos are saved in <code>public/products/uploads/</code> and linked in{' '}
+                <code>public/products.json</code>.
+              </p>
 
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                <Button onClick={handleSaveEdit} size="lg" className="flex-1">
-                  Save Changes
+                <Button onClick={handleSaveEdit} size="lg" className="flex-1" disabled={saving}>
+                  {saving ? 'Saving…' : 'Save Changes'}
                 </Button>
                 <Button
                   onClick={() => setEditingId(null)}

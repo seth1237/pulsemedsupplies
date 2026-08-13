@@ -5,6 +5,7 @@ import Link from 'next/link'
 import ProductCard from './product-card'
 import { buttonVariants } from '@/components/ui/button'
 import { fetchProducts, type Product } from '@/lib/products'
+import { sortProductsLabFirst } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 export default function ProductList({
@@ -12,11 +13,13 @@ export default function ProductList({
   showViewMore = true,
   compact = false,
   columns = 3,
+  preferLab = false,
 }: {
   limit?: number
   showViewMore?: boolean
   compact?: boolean
   columns?: 3 | 4 | 6
+  preferLab?: boolean
 }) {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
@@ -24,7 +27,7 @@ export default function ProductList({
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const data = await fetchProducts()
+        const data = preferLab ? sortProductsLabFirst(await fetchProducts()) : await fetchProducts()
         setProducts(limit ? data.slice(0, limit) : data)
       } catch (error) {
         console.error('Error loading products:', error)
@@ -34,7 +37,7 @@ export default function ProductList({
     }
 
     loadProducts()
-  }, [limit])
+  }, [limit, preferLab])
 
   const gridClass =
     columns === 6

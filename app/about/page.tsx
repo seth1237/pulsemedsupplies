@@ -42,11 +42,12 @@ export default function About() {
                 PULSEMED
               </p>
               <h1 className="max-w-4xl font-display text-4xl font-semibold tracking-tight text-ink text-balance sm:text-5xl lg:text-6xl">
-                Built to support healthcare delivery across East Africa
+                Kenya's laboratory equipment partner
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                We specialize in medical equipment and consumables supply, with installation,
-                commissioning, preventive maintenance, and biomedical engineering support.
+                Pulsemed Solutions Limited supplies laboratory analysers, microscopes, autoclaves, and
+                medical equipment to hospitals and diagnostic centres in Kenya — with installation,
+                commissioning, and biomedical support from Nairobi.
               </p>
             </div>
           </Container>
@@ -58,17 +59,17 @@ export default function About() {
               <div className="neu-surface rounded-[2rem] p-6 sm:p-8 lg:p-10">
                 <SectionHeading
                   eyebrow="Mission"
-                  title="Equip facilities with solutions they can rely on"
-                  description="Pulsemed supports hospitals, diagnostic centers, laboratories, NGOs, and faith-based organizations with compliant medical equipment and hands-on technical support."
+                  title="Equip Kenyan laboratories with solutions they can rely on"
+                  description="We support hospitals, diagnostic centres, laboratories, NGOs, and faith-based organisations in Kenya with compliant lab equipment and hands-on technical support."
                 />
                 <div className="mt-8 space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>
-                    Our work covers the full lifecycle of equipment — from sourcing and delivery to
-                    installation, commissioning, and ongoing maintenance.
+                    Our core focus is the laboratory: haematology and chemistry analysers, microscopy,
+                    and sterilisation — then the clinical equipment that sits around a working lab.
                   </p>
                   <p>
-                    We focus on long-term partnerships that keep clinical environments operational,
-                    compliant, and ready for care.
+                    Work covers the full lifecycle, from sourcing and delivery to installation,
+                    commissioning, and ongoing maintenance for Kenyan facilities.
                   </p>
                 </div>
               </div>
@@ -85,10 +86,10 @@ export default function About() {
                   />
                 </div>
                 <p className="font-display text-2xl font-semibold tracking-tight text-ink">
-                  Healthcare technology partner
+                  Laboratory technology partner
                 </p>
                 <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-                  Supply · Install · Maintain · Support
+                  Kenya · Supply · Install · Maintain
                 </p>
               </div>
             </div>
@@ -124,8 +125,8 @@ export default function About() {
               <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-end">
                 <SectionHeading
                   eyebrow="Presence"
-                  title="Active partnerships across the region"
-                  description="We work with healthcare partners in Kenya, Uganda, and Tanzania to keep facilities equipped and supported."
+                  title="Headquartered for the Kenyan market"
+                  description="We serve laboratories and hospitals across Kenya first, with active partnerships in Uganda and Tanzania."
                 />
                 <div className="grid gap-4 sm:grid-cols-3">
                   {regions.map((region) => (
