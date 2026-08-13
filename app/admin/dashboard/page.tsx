@@ -90,7 +90,7 @@ export default function AdminDashboard() {
       <header className="sticky top-0 z-20 bg-[#eef3f8]/92 backdrop-blur-xl">
         <Container className="flex h-16 items-center justify-between sm:h-[4.5rem]">
           <div className="neu-surface flex items-center gap-3 rounded-2xl px-3 py-2">
-            <div className="relative h-10 w-28">
+            <div className="relative h-14 w-40 sm:h-16 sm:w-48">
               <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain" />
             </div>
             <span className="hidden h-5 w-px bg-[#d8e2ec] sm:block" />

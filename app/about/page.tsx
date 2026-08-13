@@ -5,7 +5,7 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import SectionHeading from '@/components/section-heading'
 import { buttonVariants } from '@/components/ui/button'
-import { LOGO_URL, WHATSAPP_URL } from '@/lib/products'
+import { LOGO_SQUARE_URL, WHATSAPP_URL } from '@/lib/products'
 import { cn } from '@/lib/utils'
 import { MapPin } from 'lucide-react'
 
@@ -73,9 +73,16 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="neu-surface flex min-h-[280px] flex-col items-center justify-center rounded-[2rem] p-10 text-center sm:p-12">
-                <div className="relative mb-6 h-28 w-56">
-                  <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain" />
+              <div className="neu-surface flex min-h-[320px] flex-col items-center justify-center rounded-[2rem] p-10 text-center sm:min-h-[360px] sm:p-12">
+                <div className="relative mb-8 h-44 w-44 sm:h-52 sm:w-52">
+                  <Image
+                    src={LOGO_SQUARE_URL}
+                    alt="Pulsemed"
+                    fill
+                    className="object-contain"
+                    sizes="208px"
+                    priority
+                  />
                 </div>
                 <p className="font-display text-2xl font-semibold tracking-tight text-ink">
                   Healthcare technology partner

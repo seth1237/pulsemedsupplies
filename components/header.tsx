@@ -51,15 +51,15 @@ export default function Header() {
         )}
       >
         <Container>
-          <nav className="flex h-16 items-center justify-between sm:h-[4.5rem]">
+          <nav className="flex h-[4.5rem] items-center justify-between sm:h-20">
             <Link href="/" className="relative z-50 flex items-center gap-3" onClick={() => setIsOpen(false)}>
-              <span className="inline-flex items-center rounded-xl bg-white px-2 py-1 shadow-sm">
+              <span className="inline-flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-sm">
                 <Image
                   src={LOGO_URL}
                   alt="Pulsemed"
-                  width={180}
-                  height={72}
-                  className="h-10 w-auto sm:h-11"
+                  width={220}
+                  height={88}
+                  className="h-12 w-auto sm:h-14"
                   priority
                 />
               </span>
@@ -147,9 +147,9 @@ export default function Header() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_18_32)_0%,rgb(15_28_45)_55%,rgb(11_18_32)_100%)]" />
           </div>
 
-          <div className="relative flex h-16 items-center justify-between border-b border-white/10 px-5 sm:h-[4.5rem]">
-            <div className="rounded-lg bg-white px-2 py-1">
-              <div className="relative h-8 w-28">
+          <div className="relative flex h-[4.5rem] items-center justify-between border-b border-white/10 px-5 sm:h-20">
+            <div className="rounded-lg bg-white px-2.5 py-1.5">
+              <div className="relative h-12 w-40 sm:h-14 sm:w-44">
                 <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain" />
               </div>
             </div>

@@ -56,9 +56,10 @@ export async function fetchCategories(): Promise<ProductCategory[]> {
 }
 
 export const LOGO_URL = '/logos/pulsemed.png'
-export const WHATSAPP_URL = 'https://wa.me/254716193821'
-export const PHONE_TEL = 'tel:+254716193986'
-export const EMAIL_MAILTO = 'mailto:arstenyxltd254@gmail.com'
-export const SUPPORT_PHONE_DISPLAY = '+254 716 193986'
-export const WHATSAPP_PHONE_DISPLAY = '+254 716 193821'
-export const EMAIL_DISPLAY = 'arstenyxltd254@gmail.com'
+export const LOGO_SQUARE_URL = '/logos/logopulsemedsquare.png'
+export const WHATSAPP_URL = 'https://wa.me/254100020464'
+export const PHONE_TEL = 'tel:+254100020464'
+export const EMAIL_MAILTO = 'mailto:pulsemedsolutions1@gmail.com'
+export const SUPPORT_PHONE_DISPLAY = '+254 100 020464'
+export const WHATSAPP_PHONE_DISPLAY = '+254 100 020464'
+export const EMAIL_DISPLAY = 'pulsemedsolutions1@gmail.com'
