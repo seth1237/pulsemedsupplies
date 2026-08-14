@@ -12,7 +12,7 @@ import { ArrowUpRight, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products?department=lab', label: 'Lab Equipment' },
+  { href: '/products?department=Laboratory', label: 'Lab Equipment' },
   { href: '/products', label: 'Catalogue' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -21,7 +21,9 @@ const navLinks = [
 function isNavActive(pathname: string, href: string) {
   const pathOnly = href.split('?')[0]
   if (pathOnly === '/') return pathname === '/'
-  if (href.includes('department=lab')) return pathname === '/products'
+  if (href.includes('department=Laboratory') || href.includes('department=lab')) {
+    return pathname === '/products'
+  }
   if (pathOnly === '/products') return pathname.startsWith('/products/')
   return pathname === pathOnly || pathname.startsWith(`${pathOnly}/`)
 }

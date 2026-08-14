@@ -42,26 +42,26 @@ const departments = [
     icon: FlaskConical,
     title: 'Laboratory',
     description: 'Analysers, microscopes, autoclaves, and full lab setups for Kenyan hospitals and diagnostic centres.',
-    href: '/products?department=lab',
+    href: '/products?department=Laboratory',
     featured: true,
   },
   {
     icon: Activity,
-    title: 'Triage & Emergency',
+    title: 'Triage',
     description: 'Rapid-response tools for first-line clinical assessment.',
-    href: '/products?department=Triage%20%26%20Emergency',
+    href: '/products?department=Triage',
   },
   {
     icon: Stethoscope,
-    title: 'ICU Setup',
+    title: 'ICU',
     description: 'Beds, monitors, ventilators, and infusion systems.',
-    href: '/products?department=ICU%20Setup',
+    href: '/products?department=ICU',
   },
   {
     icon: Scan,
     title: 'Radiology & Dental',
     description: 'Imaging and dental equipment for specialised care.',
-    href: '/products',
+    href: '/products?department=Radiology',
   },
 ]
 
@@ -85,7 +85,7 @@ export default function Page() {
               </p>
               <div className="mt-7 flex flex-col gap-2.5 sm:flex-row sm:items-center">
                 <Link
-                  href="/products?department=lab"
+                  href="/products?department=Laboratory"
                   className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-semibold text-ink transition hover:bg-[#f0a400]"
                 >
                   Browse Lab Equipment
@@ -165,7 +165,7 @@ export default function Page() {
                 description="Analysers, microscopes, and sterilisation systems selected for Kenyan diagnostic labs — plus supporting clinical equipment."
               />
               <Link
-                href="/products?department=lab"
+                href="/products?department=Laboratory"
                 className={cn(
                   buttonVariants({ variant: 'outline', size: 'sm' }),
                   'shrink-0 self-start sm:self-auto',

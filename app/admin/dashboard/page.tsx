@@ -15,6 +15,26 @@ function adminHeaders(): HeadersInit {
   return { Authorization: `Bearer ${token}` }
 }
 
+async function readJsonResponse<T = any>(response: Response): Promise<T> {
+  const text = await response.text()
+  if (!text.trim()) {
+    throw new Error(
+      response.ok
+        ? 'Server returned an empty response'
+        : `Upload failed (HTTP ${response.status})`,
+    )
+  }
+  try {
+    return JSON.parse(text) as T
+  } catch {
+    throw new Error(
+      response.ok
+        ? 'Server returned invalid JSON'
+        : text.slice(0, 180) || `Upload failed (HTTP ${response.status})`,
+    )
+  }
+}
+
 export default function AdminDashboard() {
   const router = useRouter()
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -99,9 +119,12 @@ export default function AdminDashboard() {
           image: editFormData.image,
         }),
       })
-      const payload = await response.json()
+      const payload = await readJsonResponse<{ error?: string; product?: Product }>(response)
       if (!response.ok) {
         throw new Error(payload.error || 'Save failed')
+      }
+      if (!payload.product) {
+        throw new Error('Save succeeded but no product was returned')
       }
       replaceProduct(payload.product)
       setStatus('Product saved')
@@ -125,15 +148,24 @@ export default function AdminDashboard() {
         headers: adminHeaders(),
         body,
       })
-      const payload = await response.json()
+      const payload = await readJsonResponse<{ error?: string; product?: Product }>(response)
       if (!response.ok) {
         throw new Error(payload.error || 'Upload failed')
+      }
+      if (!payload.product) {
+        throw new Error('Upload succeeded but no product was returned')
       }
       replaceProduct({
         ...payload.product,
         image: String(payload.product.image).split('?')[0],
       })
       setStatus('Image uploaded to /public/products/uploads')
+      // Keep edit form preview in sync when uploading from the dialog.
+      setEditFormData((current) =>
+        String(editingId) === String(productId)
+          ? { ...current, image: String(payload.product!.image).split('?')[0] }
+          : current,
+      )
     } catch (uploadError) {
       setError(uploadError instanceof Error ? uploadError.message : 'Upload failed')
     } finally {

@@ -49,15 +49,19 @@ export async function GET() {
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to load categories'
 
-    try {
-      const products = await fetchLocalProducts()
-      return NextResponse.json({
-        source: 'local',
-        categories: categoriesFromProducts(products),
-        warning: message,
-      })
-    } catch {
-      return NextResponse.json({ error: message }, { status: 502 })
+    if (!isErpConfigured()) {
+      try {
+        const products = await fetchLocalProducts()
+        return NextResponse.json({
+          source: 'local',
+          categories: categoriesFromProducts(products),
+          warning: message,
+        })
+      } catch {
+        // continue
+      }
     }
+
+    return NextResponse.json({ error: message }, { status: 502 })
   }
 }

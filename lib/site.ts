@@ -33,10 +33,46 @@ export function isLabDepartment(name: string): boolean {
 
 export function matchesDepartmentFilter(department: string, filter: string): boolean {
   if (!filter || filter === 'All') return true
-  if (filter.toLowerCase() === 'lab' || filter.toLowerCase() === 'laboratory') {
+  const dept = department.toLowerCase().trim()
+  const selected = filter.toLowerCase().trim()
+  if (selected === 'lab' || selected === 'laboratory') {
     return isLabDepartment(department)
   }
-  return department.toLowerCase() === filter.toLowerCase()
+  if (dept === selected) return true
+
+  const normalize = (value: string) =>
+    value
+      .toLowerCase()
+      .replace(/&/g, ' and ')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+
+  const deptNorm = normalize(department)
+  const filterNorm = normalize(filter)
+  if (!deptNorm || !filterNorm) return false
+  if (deptNorm === filterNorm) return true
+  if (deptNorm.includes(filterNorm) || filterNorm.includes(deptNorm)) return true
+
+  const aliases: Record<string, string[]> = {
+    triage: ['triage', 'triage and emergency', 'emergency'],
+    icu: ['icu', 'icu setup', 'intensive care'],
+    laboratory: ['lab', 'laboratory'],
+    "doctor's room": ['doctors room', 'doctor room', 'consultation'],
+    'maternity and neonatal': ['maternity', 'neonatal', 'maternity neonatal'],
+  }
+
+  for (const group of Object.values(aliases)) {
+    const filterInGroup = group.some(
+      (alias) => filterNorm === alias || filterNorm.includes(alias) || alias.includes(filterNorm),
+    )
+    const deptInGroup = group.some(
+      (alias) => deptNorm === alias || deptNorm.includes(alias) || alias.includes(deptNorm),
+    )
+    if (filterInGroup && deptInGroup) return true
+  }
+
+  return false
 }
 
 export function sortDepartmentsLabFirst(departments: string[]): string[] {

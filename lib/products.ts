@@ -27,11 +27,17 @@ export async function fetchProducts(categoryIds?: string[]): Promise<Product[]> 
   }
   const query = params.toString()
   const response = await fetch(`/api/catalog/products${query ? `?${query}` : ''}`)
-  if (!response.ok) {
-    throw new Error('Failed to load products')
+  const text = await response.text()
+  let data: any = null
+  try {
+    data = text ? JSON.parse(text) : null
+  } catch {
+    throw new Error('Failed to load products (invalid response)')
   }
-  const data = await response.json()
-  return (data.products || []) as Product[]
+  if (!response.ok) {
+    throw new Error(data?.error || 'Failed to load products')
+  }
+  return (data?.products || []) as Product[]
 }
 
 export async function fetchProductById(id: string): Promise<Product | null> {
@@ -39,20 +45,32 @@ export async function fetchProductById(id: string): Promise<Product | null> {
   if (response.status === 404) {
     return null
   }
-  if (!response.ok) {
-    throw new Error('Failed to load product')
+  const text = await response.text()
+  let data: any = null
+  try {
+    data = text ? JSON.parse(text) : null
+  } catch {
+    throw new Error('Failed to load product (invalid response)')
   }
-  const data = await response.json()
-  return (data.product || null) as Product | null
+  if (!response.ok) {
+    throw new Error(data?.error || 'Failed to load product')
+  }
+  return (data?.product || null) as Product | null
 }
 
 export async function fetchCategories(): Promise<ProductCategory[]> {
   const response = await fetch('/api/catalog/categories')
-  if (!response.ok) {
-    throw new Error('Failed to load categories')
+  const text = await response.text()
+  let data: any = null
+  try {
+    data = text ? JSON.parse(text) : null
+  } catch {
+    throw new Error('Failed to load categories (invalid response)')
   }
-  const data = await response.json()
-  return (data.categories || []) as ProductCategory[]
+  if (!response.ok) {
+    throw new Error(data?.error || 'Failed to load categories')
+  }
+  return (data?.categories || []) as ProductCategory[]
 }
 
 export const LOGO_URL = '/logos/pulsemed.png'

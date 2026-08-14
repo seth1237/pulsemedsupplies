@@ -13,7 +13,7 @@ import {
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products?department=lab', label: 'Lab Equipment' },
+  { href: '/products?department=Laboratory', label: 'Lab Equipment' },
   { href: '/products', label: 'Catalogue' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

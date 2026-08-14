@@ -86,7 +86,10 @@ export default function ProductsPage() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return products.filter((product) => {
-      const matchesDept = selectedDept === 'All' || product.department === selectedDept
+      const matchesDept =
+        selectedDept === 'All' ||
+        product.department === selectedDept ||
+        matchesDepartmentFilter(product.department, selectedDept)
       const matchesQuery =
         !q ||
         product.name.toLowerCase().includes(q) ||
