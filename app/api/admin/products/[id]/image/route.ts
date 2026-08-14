@@ -93,9 +93,14 @@ async function uploadImageToErp(productId: string, file: File, optimized: Buffer
     }
 
     if (!response.ok || payload?.success === false) {
-      throw new Error(
-        payload?.message || payload?.error || `ERP image upload failed (HTTP ${response.status})`,
-      )
+      const detail =
+        payload?.message || payload?.error || `HTTP ${response.status}`
+      if (response.status === 404 || /route not found/i.test(String(detail))) {
+        throw new Error(
+          'ERP image upload API is not deployed yet on the backend. Deploy the latest employeehr server (POST /api/stock/public/products/:id/image), then retry.',
+        )
+      }
+      throw new Error(`ERP image upload failed: ${detail}`)
     }
 
     const raw = (payload?.data || null) as ErpProductRaw | null
