@@ -8,7 +8,7 @@ import Container from '@/components/container'
 import { isAdminLoggedIn } from '@/lib/admin-config'
 import { fetchProducts, LOGO_URL, type Product } from '@/lib/products'
 import { cn } from '@/lib/utils'
-import { ImagePlus, Pencil, Upload, X } from 'lucide-react'
+import { Download, ImagePlus, Pencil, Upload, X } from 'lucide-react'
 
 function adminHeaders(): HeadersInit {
   const token = localStorage.getItem('admin_token') || ''
@@ -170,9 +170,21 @@ export default function AdminDashboard() {
               Catalogue admin
             </h1>
           </div>
-          <Button onClick={handleLogout} variant="outline" size="sm">
-            Logout
-          </Button>
+          <div className="flex items-center gap-2">
+            <a
+              href="/exports/pulsemed-erp-products.csv"
+              download
+              className={cn(
+                'neu-btn inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold',
+              )}
+            >
+              <Download className="size-3.5" />
+              ERP CSV
+            </a>
+            <Button onClick={handleLogout} variant="outline" size="sm">
+              Logout
+            </Button>
+          </div>
         </Container>
       </header>
 
