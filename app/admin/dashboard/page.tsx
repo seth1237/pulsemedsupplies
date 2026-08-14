@@ -159,7 +159,7 @@ export default function AdminDashboard() {
         ...payload.product,
         image: String(payload.product.image).split('?')[0],
       })
-      setStatus('Image uploaded to /public/products/uploads')
+      setStatus('Image uploaded successfully')
       // Keep edit form preview in sync when uploading from the dialog.
       setEditFormData((current) =>
         String(editingId) === String(productId)
@@ -438,8 +438,8 @@ export default function AdminDashboard() {
               </label>
 
               <p className="text-xs text-muted-foreground">
-                Photos are saved in <code>public/products/uploads/</code> and linked in{' '}
-                <code>public/products.json</code>.
+                Photos are saved to the ERP catalogue on Vercel (or to{' '}
+                <code>public/products/uploads/</code> in local mode).
               </p>
 
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">

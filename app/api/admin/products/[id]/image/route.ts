@@ -3,6 +3,14 @@ import path from 'path'
 import { NextResponse } from 'next/server'
 import sharp from 'sharp'
 import { isAdminLoggedIn } from '@/lib/admin-config'
+import {
+  getErpBaseUrl,
+  getErpOrgId,
+  getErpRequestTimeoutMs,
+  isErpConfigured,
+} from '@/lib/erp/config'
+import { normalizeErpProduct } from '@/lib/erp/normalize'
+import type { ErpProductRaw } from '@/lib/erp/types'
 import { updateLocalProduct } from '@/lib/products-local'
 import { upsertImageOverride } from '@/lib/product-image-overrides'
 
@@ -25,6 +33,96 @@ function getToken(request: Request): string | null {
     return header.slice(7).trim()
   }
   return request.headers.get('x-admin-token')
+}
+
+function isReadonlyServerFilesystem() {
+  return Boolean(
+    process.env.VERCEL ||
+      process.env.AWS_LAMBDA_FUNCTION_NAME ||
+      process.cwd().startsWith('/var/task'),
+  )
+}
+
+async function uploadImageToErp(productId: string, file: File, optimized: Buffer) {
+  const orgId = getErpOrgId()
+  if (!orgId) {
+    throw new Error('ERP_ORG_ID is not configured')
+  }
+
+  const form = new FormData()
+  form.append(
+    'file',
+    new Blob([new Uint8Array(optimized)], { type: 'image/webp' }),
+    `${productId}.webp`,
+  )
+
+  const params = new URLSearchParams({ orgId })
+  const headers: Record<string, string> = {
+    'X-Org-Id': orgId,
+  }
+  const uploadSecret = String(
+    process.env.ERP_WEBSITE_UPLOAD_SECRET || process.env.WEBSITE_UPLOAD_SECRET || '',
+  ).trim()
+  if (uploadSecret) {
+    headers['X-Website-Key'] = uploadSecret
+  }
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), getErpRequestTimeoutMs())
+
+  try {
+    const response = await fetch(
+      `${getErpBaseUrl()}/api/stock/public/products/${encodeURIComponent(productId)}/image?${params}`,
+      {
+        method: 'POST',
+        headers,
+        body: form,
+        signal: controller.signal,
+        cache: 'no-store',
+      },
+    )
+
+    const text = await response.text()
+    let payload: any = null
+    try {
+      payload = text ? JSON.parse(text) : null
+    } catch {
+      throw new Error(
+        text.slice(0, 180) || `ERP image upload failed (HTTP ${response.status})`,
+      )
+    }
+
+    if (!response.ok || payload?.success === false) {
+      throw new Error(
+        payload?.message || payload?.error || `ERP image upload failed (HTTP ${response.status})`,
+      )
+    }
+
+    const raw = (payload?.data || null) as ErpProductRaw | null
+    const normalized = raw ? normalizeErpProduct(raw) : null
+    const imageUrl =
+      normalized?.image ||
+      String(raw?.imageUrl || raw?.image || '').trim() ||
+      ''
+
+    if (!normalized && !imageUrl) {
+      throw new Error('ERP accepted the upload but returned no product image')
+    }
+
+    return {
+      product: normalized || {
+        id: String(productId),
+        name: String(raw?.name || productId),
+        department: String(raw?.categoryName || 'Uncategorized'),
+        description: String(raw?.description || ''),
+        specs: String(raw?.description || ''),
+        image: imageUrl,
+      },
+      source: 'erp' as const,
+    }
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 export async function POST(request: Request, { params }: RouteParams) {
@@ -60,15 +158,36 @@ export async function POST(request: Request, { params }: RouteParams) {
       .webp({ quality: 82 })
       .toBuffer()
 
+    // On Vercel/serverless the local filesystem is read-only — store on ERP instead.
+    if (isErpConfigured() || isReadonlyServerFilesystem()) {
+      if (!isErpConfigured()) {
+        return NextResponse.json(
+          {
+            error:
+              'Local photo uploads are not available on this host. Set CATALOG_SOURCE=erp and ERP_ORG_ID so images can be stored in the ERP.',
+          },
+          { status: 503 },
+        )
+      }
+
+      const uploaded = await uploadImageToErp(id, file, optimized)
+      return NextResponse.json({
+        success: true,
+        source: uploaded.source,
+        product: {
+          ...uploaded.product,
+          image: `${uploaded.product.image}${uploaded.product.image.includes('?') ? '&' : '?'}v=${Date.now()}`,
+        },
+      })
+    }
+
     const safeId = String(id).replace(/[^a-zA-Z0-9_-]/g, '_')
     const relativePath = `/products/uploads/${safeId}.webp`
     const diskPath = path.join(process.cwd(), 'public', 'products', 'uploads', `${safeId}.webp`)
     await mkdir(path.dirname(diskPath), { recursive: true })
     await writeFile(diskPath, optimized)
 
-    // Prefer updating the local catalogue when the product exists there.
     const localProduct = await updateLocalProduct(id, { image: relativePath })
-    // Always keep an override map so ERP-sourced products can show uploaded photos.
     await upsertImageOverride(id, relativePath)
 
     const product = localProduct || {
@@ -82,6 +201,7 @@ export async function POST(request: Request, { params }: RouteParams) {
 
     return NextResponse.json({
       success: true,
+      source: 'local',
       product: { ...product, image: `${relativePath}?v=${Date.now()}` },
     })
   } catch (error) {
