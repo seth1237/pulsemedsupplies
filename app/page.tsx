@@ -40,7 +40,7 @@ export default function Page() {
                 PULSEMED · KENYA
               </p>
               <h1 className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-4xl lg:text-5xl">
-                Laboratory equipment for Kenyan hospitals and diagnostic labs
+                Laboratory equipment for East African hospitals and diagnostic labs
               </h1>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base text-pretty">
                 Pulsemed Solutions Limited supplies, installs, and supports lab analysers, microscopes,
@@ -132,7 +132,7 @@ export default function Page() {
                     Ready to equip your laboratory?
                   </h2>
                   <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-                    Tell us what your Kenyan facility needs. We will help you select, quote, install,
+                    Tell us what your facility needs. We will help you select, quote, install,
                     and support the right lab and clinical equipment.
                   </p>
                 </div>

@@ -69,7 +69,7 @@ export default function About() {
                   </p>
                   <p>
                     Work covers the full lifecycle, from sourcing and delivery to installation,
-                    commissioning, and ongoing maintenance for Kenyan facilities.
+                    commissioning, and ongoing maintenance for your facilities.
                   </p>
                 </div>
               </div>

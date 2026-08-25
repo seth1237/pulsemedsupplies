@@ -273,7 +273,7 @@ export default function ProductsPage() {
                       </p>
                       <p className="mt-1 text-sm text-muted-foreground">
                         Our Nairobi team can specify a laboratory setup or supporting clinical equipment
-                        for your Kenyan facility.
+                        for your your facility.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-3">
