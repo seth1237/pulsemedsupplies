@@ -33,8 +33,9 @@ export default function ProductCard({
     >
       <div
         className={cn(
-          'relative overflow-hidden bg-[#e4ebf3]',
-          compact ? 'aspect-square' : 'aspect-[4/3]',
+          'relative overflow-hidden bg-gradient-to-br from-[#eef3f8] via-[#e8eef6] to-[#dde6f0]',
+          // Fixed frame so square, landscape, and portrait photos all sit evenly
+          'aspect-[4/3]',
         )}
       >
         {image ? (
@@ -42,7 +43,10 @@ export default function ProductCard({
             src={image}
             alt={name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            className={cn(
+              'object-contain transition-transform duration-500 group-hover:scale-[1.03]',
+              compact ? 'p-2.5 sm:p-3' : 'p-3 sm:p-4',
+            )}
             sizes={
               compact
                 ? '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw'
@@ -50,12 +54,12 @@ export default function ProductCard({
             }
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#eef3f8] to-secondary/10">
+          <div className="flex h-full w-full items-center justify-center">
             <span className="font-display text-xs font-medium text-muted-foreground">PULSEMED</span>
           </div>
         )}
         {department && !compact ? (
-          <span className="absolute left-3 top-3 rounded-lg bg-[#eef3f8]/92 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink shadow-[3px_3px_6px_rgb(163_177_198_/_0.25),_-2px_-2px_5px_rgb(255_255_255_/_0.8)] backdrop-blur">
+          <span className="absolute left-3 top-3 z-10 rounded-lg bg-[#eef3f8]/92 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink shadow-[3px_3px_6px_rgb(163_177_198_/_0.25),_-2px_-2px_5px_rgb(255_255_255_/_0.8)] backdrop-blur">
             {department}
           </span>
         ) : null}

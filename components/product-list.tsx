@@ -21,17 +21,26 @@ export default function ProductList({
   preferLab?: boolean
 }) {
   const [products, setProducts] = useState<Product[]>([])
+  const [hasMore, setHasMore] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
+        // Fetch one extra item so we know whether a "View more" control is needed
+        const fetchLimit = limit && limit > 0 ? limit + 1 : undefined
         const data = await fetchProducts({
-          limit: limit || undefined,
+          limit: fetchLimit,
           lite: true,
           preferLab,
         })
-        setProducts(data)
+        if (limit && limit > 0 && data.length > limit) {
+          setProducts(data.slice(0, limit))
+          setHasMore(true)
+        } else {
+          setProducts(data)
+          setHasMore(false)
+        }
       } catch (error) {
         console.error('Error loading products:', error)
       } finally {
@@ -77,10 +86,13 @@ export default function ProductList({
           />
         ))}
       </div>
-      {limit && showViewMore ? (
-        <div className="mt-10 flex justify-center">
-          <Link href="/products" className={cn(buttonVariants({ variant: 'dark', size: 'default' }))}>
-            View Full Catalogue
+      {showViewMore && hasMore ? (
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <Link
+            href={preferLab ? '/products?department=Laboratory' : '/products'}
+            className={cn(buttonVariants({ variant: 'dark', size: 'default' }))}
+          >
+            View more
           </Link>
         </div>
       ) : null}

@@ -109,18 +109,18 @@ export default function ProductDetail() {
         <section className="py-8 sm:py-12">
           <Container>
             <div className="grid gap-6 lg:grid-cols-2">
-              <div className="neu-surface relative aspect-square overflow-hidden rounded-[2rem]">
+              <div className="neu-surface relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#eef3f8] via-[#e8eef6] to-[#dde6f0] sm:aspect-square">
                 {product.image ? (
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-cover"
+                    className="object-contain p-5 sm:p-8"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#eef3f8] to-secondary/10">
+                  <div className="flex h-full w-full items-center justify-center">
                     <span className="font-display text-lg font-medium text-muted-foreground">
                       PULSEMED
                     </span>

@@ -86,7 +86,7 @@ export default function Page() {
                 <ArrowRight className="size-3.5" />
               </Link>
             </div>
-            <ProductList limit={8} showViewMore={false} compact columns={4} preferLab />
+            <ProductList limit={8} showViewMore compact columns={4} preferLab />
           </Container>
         </section>
 

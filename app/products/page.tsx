@@ -36,6 +36,8 @@ function categoriesFromProducts(products: Product[]): ProductCategory[] {
   return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name))
 }
 
+const PAGE_SIZE = 12
+
 export default function ProductsPage() {
   const searchParams = useSearchParams()
   const departmentParam = searchParams.get('department') || ''
@@ -45,6 +47,7 @@ export default function ProductsPage() {
   const [selectedDept, setSelectedDept] = useState('All')
   const [query, setQuery] = useState('')
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
   useEffect(() => {
     const load = async () => {
@@ -108,6 +111,13 @@ export default function ProductsPage() {
       return matchesDept && matchesQuery
     })
   }, [products, selectedDept, query])
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [selectedDept, query])
+
+  const visibleProducts = filtered.slice(0, visibleCount)
+  const hasMoreProducts = filtered.length > visibleCount
 
   const clearFilters = () => {
     setSelectedDept('All')
@@ -186,7 +196,11 @@ export default function ProductsPage() {
                   <p className="text-sm text-muted-foreground">
                     Showing{' '}
                     <span className="font-semibold text-ink">
-                      {loading ? '…' : filtered.length}
+                      {loading
+                        ? '…'
+                        : hasMoreProducts
+                          ? `${visibleProducts.length} of ${filtered.length}`
+                          : filtered.length}
                     </span>{' '}
                     products
                     {selectedDept !== 'All' ? (
@@ -219,23 +233,36 @@ export default function ProductsPage() {
                     </button>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
-                    {filtered.map((product, index) => (
-                      <div
-                        key={product.id}
-                        className="animate-fade-up"
-                        style={{ animationDelay: `${Math.min(index, 8) * 40}ms` }}
-                      >
-                        <ProductCard
-                          id={product.id}
-                          image={product.image}
-                          name={product.name}
-                          description={product.description}
-                          department={product.department}
-                        />
+                  <>
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
+                      {visibleProducts.map((product, index) => (
+                        <div
+                          key={product.id}
+                          className="animate-fade-up"
+                          style={{ animationDelay: `${Math.min(index % PAGE_SIZE, 8) * 40}ms` }}
+                        >
+                          <ProductCard
+                            id={product.id}
+                            image={product.image}
+                            name={product.name}
+                            description={product.description}
+                            department={product.department}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {hasMoreProducts ? (
+                      <div className="mt-8 flex justify-center">
+                        <button
+                          type="button"
+                          onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                          className="neu-btn rounded-xl px-6 py-3 text-sm font-semibold text-ink"
+                        >
+                          View more
+                        </button>
                       </div>
-                    ))}
-                  </div>
+                    ) : null}
+                  </>
                 )}
 
                 {!loading && filtered.length > 0 ? (
