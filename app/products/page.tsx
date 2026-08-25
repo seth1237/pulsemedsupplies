@@ -120,24 +120,7 @@ export default function ProductsPage() {
     <>
       <Header />
       <main>
-        <section>
-          <Container className="py-10 sm:py-12">
-            <div className="neu-surface rounded-[1.75rem] px-5 py-8 sm:px-8 sm:py-10">
-              <p className="mb-3 font-display text-sm font-semibold tracking-[0.28em] text-secondary">
-                PULSEMED
-              </p>
-              <h1 className="max-w-4xl font-display text-3xl font-semibold tracking-tight text-ink text-balance sm:text-4xl lg:text-5xl">
-                Laboratory and medical equipment for Kenya
-              </h1>
-              <p className="mt-4 max-w-3xl text-base text-muted-foreground sm:text-lg">
-                Start with the lab — analysers, microscopes, and autoclaves for Kenyan hospitals and
-                diagnostic centres — then browse ICU, triage, dental, and radiology.
-              </p>
-            </div>
-          </Container>
-        </section>
-
-        <section className="pb-14 sm:pb-20">
+        <section className="pb-14 pt-8 sm:pb-20 sm:pt-10">
           <Container>
             <div className="grid gap-6 lg:grid-cols-4 lg:gap-8">
               {/* Desktop sidebar — AsterMed-style categories */}

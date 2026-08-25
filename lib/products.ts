@@ -97,34 +97,10 @@ export const SUPPORT_PHONE_DISPLAY = '+254 100 020464'
 export const WHATSAPP_PHONE_DISPLAY = '+254 100 020464'
 export const EMAIL_DISPLAY = 'pulsemedsolutions1@gmail.com'
 
-/** Build a WhatsApp deep link with a prefilled quote request for a product. */
+/** Build a WhatsApp deep link with a prefilled quote for a product (name only). */
 export function buildWhatsAppQuoteUrl(
-  product: Pick<Product, 'name' | 'department' | 'description' | 'specs' | 'id'> & {
-    sellingPrice?: number
-  },
-  siteOrigin = 'https://www.pulsemedsolutionslimited.co.ke',
+  product: Pick<Product, 'name'>,
 ): string {
-  const lines = [
-    'Hello Pulsemed, I would like a quote for the following product:',
-    '',
-    `Product: ${product.name}`,
-    product.department ? `Category: ${product.department}` : null,
-    product.id ? `Product ID: ${product.id}` : null,
-    typeof product.sellingPrice === 'number' && product.sellingPrice > 0
-      ? `Listed price: KES ${product.sellingPrice.toLocaleString('en-KE')}`
-      : null,
-    '',
-  ].filter((line): line is string => line !== null)
-
-  const details = String(product.description || product.specs || '')
-    .replace(/\s+/g, ' ')
-    .trim()
-  if (details) {
-    lines.push(`Details: ${details.slice(0, 500)}${details.length > 500 ? '…' : ''}`, '')
-  }
-
-  lines.push(`Product page: ${siteOrigin}/products/${encodeURIComponent(String(product.id))}`)
-  lines.push('', 'Please share availability, pricing, and delivery options. Thank you.')
-
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`
+  const text = String(product.name || '').trim()
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 }
