@@ -37,7 +37,8 @@ async function erpFetch(path: string, init?: RequestInit): Promise<Response> {
         ...(init?.headers || {}),
       },
       signal: controller.signal,
-      cache: 'no-store',
+      // Short CDN/server cache — catalogue changes infrequently vs page views
+      next: { revalidate: 60 },
     })
   } catch (error) {
     if (error instanceof Error && error.name === 'AbortError') {

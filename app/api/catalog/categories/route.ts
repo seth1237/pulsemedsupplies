@@ -4,6 +4,8 @@ import { isErpConfigured } from '@/lib/erp/config'
 import { fetchLocalProducts } from '@/lib/products-local'
 import type { ProductCategory } from '@/lib/products'
 
+export const revalidate = 60
+
 function categoriesFromProducts(
   products: { department: string; categoryId?: string }[],
 ): ProductCategory[] {
@@ -28,24 +30,45 @@ export async function GET() {
       try {
         const categories = await fetchErpCategories()
         if (categories.length > 0) {
-          return NextResponse.json({ source: 'erp', categories })
+          return NextResponse.json(
+            { source: 'erp', categories },
+            {
+              headers: {
+                'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+              },
+            },
+          )
         }
       } catch {
         // Older ERP builds may not expose /public/categories yet
       }
 
       const products = await fetchErpProducts()
-      return NextResponse.json({
-        source: 'erp',
-        categories: categoriesFromProducts(products),
-      })
+      return NextResponse.json(
+        {
+          source: 'erp',
+          categories: categoriesFromProducts(products),
+        },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+          },
+        },
+      )
     }
 
     const products = await fetchLocalProducts()
-    return NextResponse.json({
-      source: 'local',
-      categories: categoriesFromProducts(products),
-    })
+    return NextResponse.json(
+      {
+        source: 'local',
+        categories: categoriesFromProducts(products),
+      },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+        },
+      },
+    )
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to load categories'
 

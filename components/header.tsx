@@ -63,17 +63,15 @@ export default function Header() {
       >
         <Container>
           <nav className="flex h-[4.5rem] items-center justify-between sm:h-20">
-            <Link href="/" className="relative z-50 flex items-center gap-3" onClick={() => setIsOpen(false)}>
-              <span className="inline-flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-sm">
-                <Image
-                  src={LOGO_URL}
-                  alt="Pulsemed"
-                  width={220}
-                  height={88}
-                  className="h-12 w-auto sm:h-14"
-                  priority
-                />
-              </span>
+            <Link href="/" className="relative z-50 flex items-center" onClick={() => setIsOpen(false)}>
+              <Image
+                src={LOGO_URL}
+                alt="Pulsemed"
+                width={220}
+                height={88}
+                className="h-12 w-auto sm:h-14"
+                priority
+              />
             </Link>
 
             <div className="hidden items-center gap-1 rounded-2xl bg-white/80 p-1.5 shadow-sm lg:flex">
@@ -156,10 +154,8 @@ export default function Header() {
           </div>
 
           <div className="relative flex h-[4.5rem] items-center justify-between border-b border-white/10 px-5 sm:h-20">
-            <div className="rounded-lg bg-white px-2.5 py-1.5">
-              <div className="relative h-12 w-40 sm:h-14 sm:w-44">
-                <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain" />
-              </div>
+            <div className="relative h-12 w-40 sm:h-14 sm:w-44">
+              <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain object-left" />
             </div>
             <button
               type="button"

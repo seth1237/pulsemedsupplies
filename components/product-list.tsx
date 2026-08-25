@@ -5,7 +5,6 @@ import Link from 'next/link'
 import ProductCard from './product-card'
 import { buttonVariants } from '@/components/ui/button'
 import { fetchProducts, type Product } from '@/lib/products'
-import { sortProductsLabFirst } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 export default function ProductList({
@@ -27,8 +26,12 @@ export default function ProductList({
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const data = preferLab ? sortProductsLabFirst(await fetchProducts()) : await fetchProducts()
-        setProducts(limit ? data.slice(0, limit) : data)
+        const data = await fetchProducts({
+          limit: limit || undefined,
+          lite: true,
+          preferLab,
+        })
+        setProducts(data)
       } catch (error) {
         console.error('Error loading products:', error)
       } finally {

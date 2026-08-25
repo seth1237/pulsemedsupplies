@@ -32,9 +32,9 @@ export default function Footer() {
       <Container className="py-14 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-md">
-            <div className="mb-5 inline-flex rounded-lg bg-white px-3.5 py-2.5">
+            <div className="mb-5">
               <div className="relative h-16 w-48 sm:h-[4.5rem] sm:w-56">
-                <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain" />
+                <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain object-left" />
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/70">

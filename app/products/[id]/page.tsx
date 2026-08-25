@@ -11,7 +11,7 @@ import ProductCard from '@/components/product-card'
 import { buttonVariants } from '@/components/ui/button'
 import {
   EMAIL_MAILTO,
-  WHATSAPP_URL,
+  buildWhatsAppQuoteUrl,
   fetchProductById,
   fetchProducts,
   type Product,
@@ -33,7 +33,7 @@ export default function ProductDetail() {
       try {
         const [detail, catalogue] = await Promise.all([
           fetchProductById(id),
-          fetchProducts(),
+          fetchProducts({ lite: true }),
         ])
         setProducts(catalogue)
         setProduct(detail || catalogue.find((p) => String(p.id) === String(id)) || null)
@@ -141,7 +141,7 @@ export default function ProductDetail() {
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href={WHATSAPP_URL}
+                    href={buildWhatsAppQuoteUrl(product)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }))}

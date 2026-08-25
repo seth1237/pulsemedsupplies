@@ -9,7 +9,6 @@ import Container from '@/components/container'
 import ProductCard from '@/components/product-card'
 import CategorySidebar from '@/components/category-sidebar'
 import {
-  fetchCategories,
   fetchProducts,
   WHATSAPP_URL,
   type Product,
@@ -24,6 +23,19 @@ import {
 import { MessageCircle, Search, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+function categoriesFromProducts(products: Product[]): ProductCategory[] {
+  const map = new Map<string, ProductCategory>()
+  for (const product of products) {
+    const name = product.department?.trim()
+    if (!name) continue
+    const key = product.categoryId || name
+    if (!map.has(key)) {
+      map.set(key, { id: key, name })
+    }
+  }
+  return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name))
+}
+
 export default function ProductsPage() {
   const searchParams = useSearchParams()
   const departmentParam = searchParams.get('department') || ''
@@ -37,12 +49,10 @@ export default function ProductsPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const [productData, categoryData] = await Promise.all([
-          fetchProducts(),
-          fetchCategories(),
-        ])
-        setProducts(sortProductsLabFirst(productData))
-        setCategories(categoryData)
+        // One catalogue request — derive categories locally (avoids a second ERP round-trip)
+        const productData = sortProductsLabFirst(await fetchProducts({ lite: true }))
+        setProducts(productData)
+        setCategories(categoriesFromProducts(productData))
       } catch (error) {
         console.error('Error loading products:', error)
       } finally {

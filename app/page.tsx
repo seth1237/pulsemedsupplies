@@ -8,16 +8,7 @@ import HeroCarousel from '@/components/hero-carousel'
 import { buttonVariants } from '@/components/ui/button'
 import { WHATSAPP_URL } from '@/lib/products'
 import { cn } from '@/lib/utils'
-import {
-  ArrowRight,
-  ShieldCheck,
-  Wrench,
-  Handshake,
-  FlaskConical,
-  Activity,
-  Scan,
-  Stethoscope,
-} from 'lucide-react'
+import { ArrowRight, ShieldCheck, Wrench, Handshake } from 'lucide-react'
 
 const values = [
   {
@@ -34,34 +25,6 @@ const values = [
     icon: Handshake,
     title: 'Partnership Focused',
     description: 'Long-term relationships with hospitals, labs, and diagnostic centres across the country.',
-  },
-]
-
-const departments = [
-  {
-    icon: FlaskConical,
-    title: 'Laboratory',
-    description: 'Analysers, microscopes, autoclaves, and full lab setups for Kenyan hospitals and diagnostic centres.',
-    href: '/products?department=Laboratory',
-    featured: true,
-  },
-  {
-    icon: Activity,
-    title: 'Triage',
-    description: 'Rapid-response tools for first-line clinical assessment.',
-    href: '/products?department=Triage',
-  },
-  {
-    icon: Stethoscope,
-    title: 'ICU',
-    description: 'Beds, monitors, ventilators, and infusion systems.',
-    href: '/products?department=ICU',
-  },
-  {
-    icon: Scan,
-    title: 'Radiology & Dental',
-    description: 'Imaging and dental equipment for specialised care.',
-    href: '/products?department=Radiology',
   },
 ]
 
@@ -103,58 +66,6 @@ export default function Page() {
             </div>
           </Container>
         </HeroCarousel>
-
-        <section className="py-14 sm:py-16">
-          <Container>
-            <SectionHeading
-              eyebrow="Kenya focus"
-              title="Built around the laboratory"
-              description="Most Kenyan facilities start with a reliable lab. We equip haematology, chemistry, microscopy, and sterilisation — then support ICU, triage, and imaging."
-              className="mb-8"
-            />
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-              {departments.map((dept) => (
-                <Link
-                  key={dept.title}
-                  href={dept.href}
-                  className={cn(
-                    'neu-surface group rounded-xl p-4 transition duration-300 hover:-translate-y-0.5',
-                    dept.featured && 'sm:col-span-2 lg:col-span-2 lg:p-6',
-                  )}
-                >
-                  <dept.icon
-                    className={cn(
-                      'mb-3 text-secondary transition group-hover:scale-110',
-                      dept.featured ? 'size-6' : 'size-4',
-                    )}
-                    strokeWidth={1.75}
-                  />
-                  <h3
-                    className={cn(
-                      'font-display font-semibold tracking-tight text-ink',
-                      dept.featured ? 'text-lg sm:text-xl' : 'text-sm sm:text-base',
-                    )}
-                  >
-                    {dept.title}
-                    {dept.featured ? (
-                      <span className="ml-2 rounded-md bg-secondary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-secondary">
-                        Kenya priority
-                      </span>
-                    ) : null}
-                  </h3>
-                  <p
-                    className={cn(
-                      'mt-1.5 leading-relaxed text-muted-foreground',
-                      dept.featured ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
-                    )}
-                  >
-                    {dept.description}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </Container>
-        </section>
 
         <section className="py-14 sm:py-16">
           <Container>
