@@ -97,10 +97,11 @@ export const SUPPORT_PHONE_DISPLAY = '+254 100 020464'
 export const WHATSAPP_PHONE_DISPLAY = '+254 100 020464'
 export const EMAIL_DISPLAY = 'pulsemedsolutions1@gmail.com'
 
-/** Build a WhatsApp deep link with a prefilled quote for a product (name only). */
+/** Build a WhatsApp deep link with a prefilled quote for a product. */
 export function buildWhatsAppQuoteUrl(
   product: Pick<Product, 'name'>,
 ): string {
-  const text = String(product.name || '').trim()
+  const name = String(product.name || '').trim() || 'this product'
+  const text = `Hey, I am requesting a quote for ${name}.`
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 }

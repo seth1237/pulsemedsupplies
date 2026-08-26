@@ -44,7 +44,7 @@ export default function Page() {
               </h1>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base text-pretty">
                 Pulsemed Solutions Limited supplies, installs, and supports lab analysers, microscopes,
-                autoclaves, and clinical equipment from Nairobi — serving facilitie.
+                autoclaves, and clinical equipment to continue supporting lives.
               </p>
               <div className="mt-7 flex flex-col gap-2.5 sm:flex-row sm:items-center">
                 <Link
