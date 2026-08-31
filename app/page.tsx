@@ -43,7 +43,7 @@ export default function Page() {
                 Medical equipment for East African hospitals and diagnostic facilities
               </h1>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base text-pretty">
-**PulseMed Solutions Limited** supplies, installs, and services precision lab analyzers, microscopes, autoclaves, and clinical equipment—delivering dependable technical support to keep vital healthcare operations running without interruption.              </p>
+PulseMed Solutions Limited** supplies, installs, and services precision lab analyzers, microscopes, autoclaves, and clinical equipment—delivering dependable technical support to keep vital healthcare operations running without interruption.              </p>
               <div className="mt-7 flex flex-col gap-2.5 sm:flex-row sm:items-center">
                 <Link
                   href="/products?department=Laboratory"
