@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface ProductCardProps {
-  id: string | number
+  slug: string
   image: string
   name: string
   description: string
@@ -14,7 +14,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({
-  id,
+  slug,
   image,
   name,
   description,
@@ -24,7 +24,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <Link
-      href={`/products/${id}`}
+      href={`/products/${slug}`}
       className={cn(
         'neu-surface group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-0.5',
         compact ? 'rounded-xl' : 'rounded-2xl',

@@ -1,4 +1,5 @@
 import { absoluteUrl } from '@/lib/site'
+import { getProductPath } from '@/lib/product-slug'
 
 export interface Product {
   id: string
@@ -56,8 +57,8 @@ export async function fetchProducts(options?: {
   return (data?.products || []) as Product[]
 }
 
-export async function fetchProductById(id: string): Promise<Product | null> {
-  const response = await fetch(`/api/catalog/products/${encodeURIComponent(id)}`)
+export async function fetchProductByRef(ref: string): Promise<Product | null> {
+  const response = await fetch(`/api/catalog/products/${encodeURIComponent(ref)}`)
   if (response.status === 404) {
     return null
   }
@@ -72,6 +73,11 @@ export async function fetchProductById(id: string): Promise<Product | null> {
     throw new Error(data?.error || 'Failed to load product')
   }
   return (data?.product || null) as Product | null
+}
+
+/** @deprecated Use fetchProductByRef — accepts product slug or legacy id. */
+export async function fetchProductById(id: string): Promise<Product | null> {
+  return fetchProductByRef(id)
 }
 
 export async function fetchCategories(): Promise<ProductCategory[]> {
@@ -102,12 +108,10 @@ export const EMAIL_DISPLAY = 'pulsemedsolutions1@gmail.com'
 /** Build a WhatsApp deep link with a prefilled quote for a product. */
 export function buildWhatsAppQuoteUrl(
   product: Pick<Product, 'name' | 'id'>,
+  products?: Product[],
 ): string {
   const name = String(product.name || '').trim() || 'this product'
-  const id = String(product.id || '').trim()
-  const productUrl = id ? absoluteUrl(`/products/${encodeURIComponent(id)}`) : ''
-  const text = productUrl
-    ? `Hey, I am requesting a quote for ${name}.\n\n${productUrl}`
-    : `Hey, I am requesting a quote for ${name}.`
+  const productUrl = absoluteUrl(getProductPath(product, products))
+  const text = `Hey, I am requesting a quote for ${name}.\n\n${productUrl}`
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 }

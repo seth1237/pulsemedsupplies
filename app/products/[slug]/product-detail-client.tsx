@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/header'
@@ -8,76 +8,42 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import ProductCard from '@/components/product-card'
 import { buttonVariants } from '@/components/ui/button'
+import { buildProductSlugMap } from '@/lib/product-slug'
 import {
   EMAIL_MAILTO,
   buildWhatsAppQuoteUrl,
-  fetchProductById,
   fetchProducts,
   type Product,
 } from '@/lib/products'
 import { cn } from '@/lib/utils'
 import { ArrowLeft, Mail, MessageCircle } from 'lucide-react'
 
-export default function ProductDetailClient({ id }: { id: string }) {
-  const [product, setProduct] = useState<Product | null>(null)
+export default function ProductDetailClient({
+  slug,
+  initialProduct,
+}: {
+  slug: string
+  initialProduct: Product
+}) {
+  const [product] = useState<Product>(initialProduct)
   const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loadingRelated, setLoadingRelated] = useState(true)
+
+  const slugMap = useMemo(() => buildProductSlugMap([product, ...products]), [product, products])
 
   useEffect(() => {
-    if (!id) return
-
-    const loadData = async () => {
+    const loadCatalogue = async () => {
       try {
-        const [detail, catalogue] = await Promise.all([
-          fetchProductById(id),
-          fetchProducts({ lite: true }),
-        ])
-        setProducts(catalogue)
-        setProduct(detail || catalogue.find((p) => String(p.id) === String(id)) || null)
+        setProducts(await fetchProducts({ lite: true }))
       } catch (error) {
-        console.error('Error loading product:', error)
+        console.error('Error loading related products:', error)
       } finally {
-        setLoading(false)
+        setLoadingRelated(false)
       }
     }
 
-    loadData()
-  }, [id])
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className="flex min-h-[60vh] items-center justify-center">
-          <p className="text-muted-foreground">Loading product...</p>
-        </main>
-        <Footer />
-      </>
-    )
-  }
-
-  if (!product) {
-    return (
-      <>
-        <Header />
-        <main>
-          <Container className="py-24 text-center">
-            <div className="neu-surface mx-auto max-w-lg rounded-[2rem] p-10">
-              <h1 className="font-display text-3xl font-semibold text-ink">Product not found</h1>
-              <p className="mt-3 text-muted-foreground">This item may have been moved or removed.</p>
-              <Link
-                href="/products"
-                className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'mt-8 inline-flex')}
-              >
-                Back to Catalogue
-              </Link>
-            </div>
-          </Container>
-        </main>
-        <Footer />
-      </>
-    )
-  }
+    loadCatalogue()
+  }, [slug])
 
   const related = products
     .filter((p) => p.id !== product.id && p.department === product.department)
@@ -138,7 +104,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href={buildWhatsAppQuoteUrl(product)}
+                    href={buildWhatsAppQuoteUrl(product, products.length ? products : [product])}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }))}
@@ -182,18 +148,26 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   View all
                 </Link>
               </div>
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {fallbackRelated.map((relatedProduct) => (
-                  <ProductCard
-                    key={relatedProduct.id}
-                    id={relatedProduct.id}
-                    image={relatedProduct.image}
-                    name={relatedProduct.name}
-                    description={relatedProduct.description}
-                    department={relatedProduct.department}
-                  />
-                ))}
-              </div>
+              {loadingRelated ? (
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {[...Array(3)].map((_, index) => (
+                    <div key={index} className="neu-surface h-72 animate-pulse rounded-2xl" />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {fallbackRelated.map((relatedProduct) => (
+                    <ProductCard
+                      key={relatedProduct.id}
+                      slug={slugMap.get(relatedProduct.id) || relatedProduct.id}
+                      image={relatedProduct.image}
+                      name={relatedProduct.name}
+                      description={relatedProduct.description}
+                      department={relatedProduct.department}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </Container>
         </section>

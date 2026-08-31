@@ -1,8 +1,24 @@
 import { fetchErpProductById, fetchErpProducts } from '@/lib/erp/client'
 import { isErpConfigured } from '@/lib/erp/config'
 import { applyImageOverrides } from '@/lib/product-image-overrides'
+import {
+  findProductBySlug,
+  isProductObjectId,
+  resolveProductFromParam,
+} from '@/lib/product-slug'
 import type { Product } from '@/lib/products'
 import { fetchLocalProducts } from '@/lib/products-local'
+
+async function loadCatalogProducts(): Promise<Product[]> {
+  if (isErpConfigured()) {
+    return applyImageOverrides(await fetchErpProducts())
+  }
+  return applyImageOverrides(await fetchLocalProducts())
+}
+
+export async function getCatalogProducts(): Promise<Product[]> {
+  return loadCatalogProducts()
+}
 
 export async function getCatalogProductById(id: string): Promise<Product | null> {
   if (isErpConfigured()) {
@@ -15,16 +31,20 @@ export async function getCatalogProductById(id: string): Promise<Product | null>
     } catch {
       // Deployed ERP may not have /products/:id yet
     }
-
-    const products = await fetchErpProducts()
-    const found = products.find((item) => item.id === id)
-    if (found) {
-      const [withImage] = await applyImageOverrides([found])
-      return withImage
-    }
-    return null
   }
 
-  const products = await applyImageOverrides(await fetchLocalProducts())
-  return products.find((item) => String(item.id) === String(id)) || null
+  const products = await loadCatalogProducts()
+  return products.find((item) => item.id === id) || null
+}
+
+export async function getCatalogProductByParam(param: string): Promise<Product | null> {
+  const value = param.trim()
+  if (!value) return null
+
+  if (isProductObjectId(value)) {
+    return getCatalogProductById(value)
+  }
+
+  const products = await loadCatalogProducts()
+  return resolveProductFromParam(products, value) || findProductBySlug(products, value) || null
 }

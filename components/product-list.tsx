@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import ProductCard from './product-card'
 import { buttonVariants } from '@/components/ui/button'
+import { buildProductSlugMap } from '@/lib/product-slug'
 import { fetchProducts, type Product } from '@/lib/products'
 import { cn } from '@/lib/utils'
 
@@ -23,6 +24,8 @@ export default function ProductList({
   const [products, setProducts] = useState<Product[]>([])
   const [hasMore, setHasMore] = useState(false)
   const [loading, setLoading] = useState(true)
+
+  const slugMap = buildProductSlugMap(products)
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -77,7 +80,7 @@ export default function ProductList({
         {products.map((product) => (
           <ProductCard
             key={product.id}
-            id={product.id}
+            slug={slugMap.get(product.id) || product.id}
             image={product.image}
             name={product.name}
             description={product.description}

@@ -14,6 +14,7 @@ import {
   type Product,
   type ProductCategory,
 } from '@/lib/products'
+import { buildProductSlugMap } from '@/lib/product-slug'
 import {
   isLabDepartment,
   matchesDepartmentFilter,
@@ -118,6 +119,7 @@ export default function ProductsPage() {
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMoreProducts = filtered.length > visibleCount
+  const slugMap = useMemo(() => buildProductSlugMap(products), [products])
 
   const clearFilters = () => {
     setSelectedDept('All')
@@ -242,7 +244,7 @@ export default function ProductsPage() {
                           style={{ animationDelay: `${Math.min(index % PAGE_SIZE, 8) * 40}ms` }}
                         >
                           <ProductCard
-                            id={product.id}
+                            slug={slugMap.get(product.id) || product.id}
                             image={product.image}
                             name={product.name}
                             description={product.description}
