@@ -1,3 +1,5 @@
+import { absoluteUrl } from '@/lib/site'
+
 export interface Product {
   id: string
   name: string
@@ -99,9 +101,13 @@ export const EMAIL_DISPLAY = 'pulsemedsolutions1@gmail.com'
 
 /** Build a WhatsApp deep link with a prefilled quote for a product. */
 export function buildWhatsAppQuoteUrl(
-  product: Pick<Product, 'name'>,
+  product: Pick<Product, 'name' | 'id'>,
 ): string {
   const name = String(product.name || '').trim() || 'this product'
-  const text = `Hey, I am requesting a quote for ${name}.`
+  const id = String(product.id || '').trim()
+  const productUrl = id ? absoluteUrl(`/products/${encodeURIComponent(id)}`) : ''
+  const text = productUrl
+    ? `Hey, I am requesting a quote for ${name}.\n\n${productUrl}`
+    : `Hey, I am requesting a quote for ${name}.`
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 }
