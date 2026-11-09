@@ -8,18 +8,38 @@ import { buildProductSlugMap } from '@/lib/product-slug'
 import { fetchProducts, type Product } from '@/lib/products'
 import { cn } from '@/lib/utils'
 
+/** Take products round-robin across departments so no single department dominates. */
+function pickAcrossDepartments(products: Product[], limit: number): Product[] {
+  const byDepartment = new Map<string, Product[]>()
+  for (const product of products) {
+    const key = product.department || 'Other'
+    const list = byDepartment.get(key)
+    if (list) list.push(product)
+    else byDepartment.set(key, [product])
+  }
+
+  const queues = Array.from(byDepartment.values())
+  const picked: Product[] = []
+  while (picked.length < limit && queues.some((queue) => queue.length > 0)) {
+    for (const queue of queues) {
+      const next = queue.shift()
+      if (next) picked.push(next)
+      if (picked.length >= limit) break
+    }
+  }
+  return picked
+}
+
 export default function ProductList({
   limit = 6,
   showViewMore = true,
   compact = false,
   columns = 3,
-  preferLab = false,
 }: {
   limit?: number
   showViewMore?: boolean
   compact?: boolean
   columns?: 3 | 4 | 6
-  preferLab?: boolean
 }) {
   const [products, setProducts] = useState<Product[]>([])
   const [hasMore, setHasMore] = useState(false)
@@ -30,16 +50,10 @@ export default function ProductList({
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        // Fetch one extra item so we know whether a "View more" control is needed
-        const fetchLimit = limit && limit > 0 ? limit + 1 : undefined
-        const data = await fetchProducts({
-          limit: fetchLimit,
-          lite: true,
-          preferLab,
-        })
-        if (limit && limit > 0 && data.length > limit) {
-          setProducts(data.slice(0, limit))
-          setHasMore(true)
+        const data = await fetchProducts({ lite: true })
+        if (limit && limit > 0) {
+          setProducts(pickAcrossDepartments(data, limit))
+          setHasMore(data.length > limit)
         } else {
           setProducts(data)
           setHasMore(false)
@@ -52,7 +66,7 @@ export default function ProductList({
     }
 
     loadProducts()
-  }, [limit, preferLab])
+  }, [limit])
 
   const gridClass =
     columns === 6
@@ -77,25 +91,27 @@ export default function ProductList({
   return (
     <div className="w-full">
       <div className={gridClass}>
-        {products.map((product) => (
-          <ProductCard
+        {products.map((product, index) => (
+          <div
             key={product.id}
-            slug={slugMap.get(product.id) || product.id}
-            image={product.image}
-            name={product.name}
-            description={product.description}
-            department={product.department}
-            compact={compact}
-          />
+            className="animate-fade-up"
+            style={{ animationDelay: `${Math.min(index, 8) * 60}ms` }}
+          >
+            <ProductCard
+              slug={slugMap.get(product.id) || product.id}
+              image={product.image}
+              name={product.name}
+              description={product.description}
+              department={product.department}
+              compact={compact}
+            />
+          </div>
         ))}
       </div>
       {showViewMore && hasMore ? (
         <div className="mt-8 flex justify-center sm:mt-10">
-          <Link
-            href={preferLab ? '/products?department=Laboratory' : '/products'}
-            className={cn(buttonVariants({ variant: 'dark', size: 'default' }))}
-          >
-            View more
+          <Link href="/products" className={cn(buttonVariants({ variant: 'dark', size: 'default' }))}>
+            View all products
           </Link>
         </div>
       ) : null}

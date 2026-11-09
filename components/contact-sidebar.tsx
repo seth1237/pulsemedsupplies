@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { EMAIL_MAILTO, PHONE_TEL, WHATSAPP_URL } from '@/lib/products'
+import FacebookIcon from '@/components/facebook-icon'
+import { EMAIL_MAILTO, FACEBOOK_URL, PHONE_TEL, WHATSAPP_URL } from '@/lib/products'
 import { Mail, MessageCircle, Phone } from 'lucide-react'
 
 export default function ContactSidebar() {
@@ -27,6 +28,13 @@ export default function ContactSidebar() {
       external: false,
       className: 'bg-primary text-ink hover:bg-[#f0a400]',
     },
+    {
+      href: FACEBOOK_URL,
+      label: 'Facebook',
+      icon: FacebookIcon,
+      external: true,
+      className: 'bg-[#1877F2] text-white hover:bg-[#166fe0]',
+    },
   ]
 
   return (
@@ -37,7 +45,7 @@ export default function ContactSidebar() {
           href={item.href}
           target={item.external ? '_blank' : undefined}
           rel={item.external ? 'noopener noreferrer' : undefined}
-          className={`group flex items-center overflow-hidden rounded-l-xl shadow-lg transition-all ${item.className}`}
+          className={`group flex items-center overflow-hidden rounded-l-xl shadow-md transition-all duration-300 ${item.className}`}
           aria-label={item.label}
         >
           <span className="flex size-11 items-center justify-center">

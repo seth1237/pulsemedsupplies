@@ -28,7 +28,7 @@ const sora = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_SHORT_NAME} — Laboratory & Medical Equipment in Kenya`,
+    default: `${SITE_SHORT_NAME} — Medical & Hospital Equipment in Kenya`,
     template: `%s | ${SITE_SHORT_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -53,20 +53,20 @@ export const metadata: Metadata = {
     locale: 'en_KE',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_SHORT_NAME} — Laboratory Equipment Supplier in Kenya`,
+    title: `${SITE_SHORT_NAME} — Medical Equipment Supplier in Kenya`,
     description: SITE_DESCRIPTION,
     images: [
       {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: `${SITE_NAME} laboratory equipment Kenya`,
+        alt: `${SITE_NAME} medical equipment Kenya`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_SHORT_NAME} — Laboratory Equipment Kenya`,
+    title: `${SITE_SHORT_NAME} — Medical Equipment Kenya`,
     description: SITE_DESCRIPTION,
     images: [OG_IMAGE],
   },
@@ -84,6 +84,9 @@ export default function RootLayout({
   return (
     <html lang="en-KE" className={`${jakarta.variable} ${sora.variable}`}>
       <body className="font-sans">
+        <noscript>
+          <style>{'.reveal,.img-fade{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
         <JsonLd />
         {children}
         <SiteExtras />

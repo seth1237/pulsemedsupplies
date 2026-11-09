@@ -1,5 +1,6 @@
 import {
   EMAIL_DISPLAY,
+  FACEBOOK_URL,
   LOGO_SQUARE_URL,
   SUPPORT_PHONE_DISPLAY,
 } from '@/lib/products'
@@ -29,14 +30,16 @@ export default function JsonLd() {
           addressCountry: 'KE',
           addressLocality: 'Nairobi',
         },
-        sameAs: ['https://www.facebook.com/profile.php?id=61590708625873'],
+        sameAs: [FACEBOOK_URL],
         knowsAbout: [
-          'Laboratory equipment',
-          'Hematology analysers',
-          'Chemistry analysers',
-          'Microscopes',
-          'Autoclaves',
           'Hospital medical equipment',
+          'Theatre equipment',
+          'ICU equipment',
+          'Triage and emergency equipment',
+          'Maternity and neonatal equipment',
+          'Laboratory equipment',
+          'Radiology equipment',
+          'Dental equipment',
         ],
       },
       {

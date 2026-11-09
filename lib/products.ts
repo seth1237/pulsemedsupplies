@@ -27,7 +27,6 @@ export async function fetchProducts(options?: {
   categoryIds?: string[]
   limit?: number
   lite?: boolean
-  preferLab?: boolean
 }): Promise<Product[]> {
   const params = new URLSearchParams()
   if (options?.categoryIds?.length) {
@@ -37,7 +36,6 @@ export async function fetchProducts(options?: {
     params.set('limit', String(options.limit))
   }
   if (options?.lite) params.set('lite', '1')
-  if (options?.preferLab) params.set('preferLab', '1')
 
   const query = params.toString()
   const response = await fetch(`/api/catalog/products${query ? `?${query}` : ''}`, {
@@ -95,8 +93,9 @@ export async function fetchCategories(): Promise<ProductCategory[]> {
   return (data?.categories || []) as ProductCategory[]
 }
 
-export const LOGO_URL = '/logos/pulsemed.png'
-export const LOGO_SQUARE_URL = '/logos/logopulsemedsquare.png'
+export const LOGO_URL = '/logos/pulsemed-logo.png'
+export const LOGO_SQUARE_URL = '/logos/pulsemed-logo-square.png'
+export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61590708625873'
 export const WHATSAPP_NUMBER = '254100020464'
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
 export const PHONE_TEL = 'tel:+254100020464'

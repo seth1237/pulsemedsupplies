@@ -41,8 +41,8 @@ export default function AdminLogin() {
       <div className="relative w-full max-w-md">
         <div className="neu-surface rounded-[1.75rem] p-8 sm:p-10">
           <div className="mb-8 flex justify-center">
-            <div className="relative h-24 w-64 sm:h-28 sm:w-72">
-              <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain" />
+            <div className="relative h-28 w-64 sm:h-32 sm:w-72">
+              <Image src={LOGO_URL} alt="Pulsemed Solutions Limited" fill className="object-contain" />
             </div>
           </div>
 

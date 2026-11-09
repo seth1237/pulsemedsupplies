@@ -15,12 +15,7 @@ import {
   type ProductCategory,
 } from '@/lib/products'
 import { buildProductSlugMap } from '@/lib/product-slug'
-import {
-  isLabDepartment,
-  matchesDepartmentFilter,
-  sortDepartmentsLabFirst,
-  sortProductsLabFirst,
-} from '@/lib/site'
+import { isLabDepartment, matchesDepartmentFilter, sortDepartments } from '@/lib/site'
 import { MessageCircle, Search, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -54,7 +49,7 @@ export default function ProductsPage() {
     const load = async () => {
       try {
         // One catalogue request — derive categories locally (avoids a second ERP round-trip)
-        const productData = sortProductsLabFirst(await fetchProducts({ lite: true }))
+        const productData = await fetchProducts({ lite: true })
         setProducts(productData)
         setCategories(categoriesFromProducts(productData))
       } catch (error) {
@@ -82,7 +77,7 @@ export default function ProductsPage() {
   }, [departmentParam, categories, products])
 
   const departments = useMemo(
-    () => ['All', ...sortDepartmentsLabFirst([
+    () => ['All', ...sortDepartments([
       ...categories.map((category) => category.name),
       ...products.map((product) => product.department),
     ])],
@@ -221,7 +216,7 @@ export default function ProductsPage() {
                     ))}
                   </div>
                 ) : filtered.length === 0 ? (
-                  <div className="neu-surface flex flex-col items-center rounded-[1.75rem] px-6 py-16 text-center">
+                  <div className="neu-surface flex flex-col items-center rounded-2xl px-6 py-16 text-center">
                     <p className="font-display text-xl font-semibold text-ink">No products found</p>
                     <p className="mt-2 max-w-md text-sm text-muted-foreground">
                       Try another category or clear your search to browse the full catalogue.
@@ -268,14 +263,14 @@ export default function ProductsPage() {
                 )}
 
                 {!loading && filtered.length > 0 ? (
-                  <div className="neu-surface mt-10 flex flex-col items-start justify-between gap-5 rounded-[1.75rem] p-6 sm:flex-row sm:items-center sm:p-8">
+                  <div className="neu-surface mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl p-6 sm:flex-row sm:items-center sm:p-8">
                     <div>
                       <p className="font-display text-xl font-semibold tracking-tight text-ink">
                         Need help choosing equipment?
                       </p>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        Our Nairobi team can specify a laboratory setup or supporting clinical equipment
-                        for your your facility.
+                        Our Nairobi team can help you specify equipment for any department — from a
+                        single item to a full facility setup.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-3">
@@ -321,7 +316,7 @@ export default function ProductsPage() {
         />
         <div
           className={cn(
-            'absolute inset-y-0 left-0 w-[min(88vw,320px)] bg-[#eef3f8] p-4 shadow-2xl transition-transform duration-300',
+            'absolute inset-y-0 left-0 w-[min(88vw,320px)] bg-white p-4 shadow-xl transition-transform duration-300',
             mobileFiltersOpen ? 'translate-x-0' : '-translate-x-full',
           )}
         >

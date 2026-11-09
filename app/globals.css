@@ -103,11 +103,12 @@
   }
 
   body {
-    @apply bg-[#eef3f8] text-foreground antialiased;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 100% -10%, rgb(5 175 237 / 0.07), transparent),
-      radial-gradient(ellipse 60% 40% at 0% 100%, rgb(254 174 3 / 0.05), transparent);
-    background-attachment: fixed;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Every route remounts <main>, so this plays on each page navigation */
+  main {
+    animation: page-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   ::selection {
@@ -151,80 +152,94 @@
     animation: hero-progress linear forwards;
   }
 
-  /* Soft neumorphism — tuned to Pulsemed neutrals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .img-fade {
+    opacity: 0;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .img-fade.is-loaded {
+    opacity: 1;
+  }
+
+  /* Clean card + control styles (class names kept for existing markup) */
   .neu-surface {
-    background: #eef3f8;
-    box-shadow:
-      8px 8px 16px rgb(163 177 198 / 0.35),
-      -8px -8px 16px rgb(255 255 255 / 0.9);
+    background: #ffffff;
+    border: 1px solid #e3eaf2;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
   }
 
   .neu-btn {
-    background: #eef3f8;
+    background: #ffffff;
     color: #5b6b7c;
-    border: none;
-    box-shadow:
-      5px 5px 10px rgb(163 177 198 / 0.4),
-      -5px -5px 10px rgb(255 255 255 / 0.95);
+    border: 1px solid #d8e2ec;
     transition:
-      box-shadow 0.25s ease,
-      color 0.25s ease,
-      transform 0.2s ease;
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
   }
 
   .neu-btn:hover {
     color: #0b1220;
-    box-shadow:
-      3px 3px 8px rgb(163 177 198 / 0.35),
-      -3px -3px 8px rgb(255 255 255 / 0.95);
+    border-color: #c5d3e1;
+    background: #f7f9fc;
   }
 
   .neu-btn:active,
   .neu-btn-active {
     color: #0b1220;
-    box-shadow:
-      inset 4px 4px 8px rgb(163 177 198 / 0.45),
-      inset -4px -4px 8px rgb(255 255 255 / 0.9);
+    background: #eef3f8;
   }
 
   .neu-btn-accent {
-    background: linear-gradient(145deg, #06b8f7, #0499d4);
+    background: #05afed;
     color: #ffffff;
-    border: none;
-    box-shadow:
-      5px 5px 12px rgb(5 175 237 / 0.35),
-      -3px -3px 8px rgb(255 255 255 / 0.7),
-      inset 0 1px 0 rgb(255 255 255 / 0.25);
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease;
   }
 
   .neu-btn-accent:hover {
-    background: linear-gradient(145deg, #18c0fa, #05afed);
+    background: #0499d4;
   }
 
   .neu-btn-gold {
-    background: linear-gradient(145deg, #ffb91a, #e89f00);
+    background: #feae03;
     color: #0b1220;
-    border: none;
-    box-shadow:
-      5px 5px 12px rgb(254 174 3 / 0.35),
-      -3px -3px 8px rgb(255 255 255 / 0.7),
-      inset 0 1px 0 rgb(255 255 255 / 0.35);
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease;
+  }
+
+  .neu-btn-gold:hover {
+    background: #f0a400;
   }
 
   .neu-input {
-    background: #eef3f8;
-    border: none;
-    box-shadow:
-      inset 4px 4px 8px rgb(163 177 198 / 0.35),
-      inset -4px -4px 8px rgb(255 255 255 / 0.9);
+    background: #ffffff;
+    border: 1px solid #d8e2ec;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .neu-input:focus {
     outline: none;
-    box-shadow:
-      inset 5px 5px 10px rgb(163 177 198 / 0.4),
-      inset -5px -5px 10px rgb(255 255 255 / 0.95),
-      0 0 0 3px rgb(5 175 237 / 0.15);
+    border-color: #05afed;
+    box-shadow: 0 0 0 3px rgb(5 175 237 / 0.15);
   }
 }
 
@@ -265,5 +280,36 @@
   }
   to {
     width: 100%;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .img-fade {
+    opacity: 1;
+    transform: none;
   }
 }

@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
@@ -22,18 +25,20 @@ export default function ProductCard({
   className,
   compact = false,
 }: ProductCardProps) {
+  const [loaded, setLoaded] = useState(false)
+
   return (
     <Link
       href={`/products/${slug}`}
       className={cn(
-        'neu-surface group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-0.5',
+        'neu-surface group flex h-full flex-col overflow-hidden transition-[border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-[#c5d3e1] hover:shadow-lg',
         compact ? 'rounded-xl' : 'rounded-2xl',
         className,
       )}
     >
       <div
         className={cn(
-          'relative overflow-hidden bg-gradient-to-br from-[#eef3f8] via-[#e8eef6] to-[#dde6f0]',
+          'relative overflow-hidden bg-[#f4f7fb]',
           // Fixed frame so square, landscape, and portrait photos all sit evenly
           'aspect-[4/3]',
         )}
@@ -43,8 +48,10 @@ export default function ProductCard({
             src={image}
             alt={name}
             fill
+            onLoad={() => setLoaded(true)}
             className={cn(
-              'object-contain transition-transform duration-500 group-hover:scale-[1.03]',
+              'img-fade object-contain group-hover:scale-[1.04]',
+              loaded && 'is-loaded',
               compact ? 'p-2.5 sm:p-3' : 'p-3 sm:p-4',
             )}
             sizes={
@@ -59,7 +66,7 @@ export default function ProductCard({
           </div>
         )}
         {department && !compact ? (
-          <span className="absolute left-3 top-3 z-10 rounded-lg bg-[#eef3f8]/92 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink shadow-[3px_3px_6px_rgb(163_177_198_/_0.25),_-2px_-2px_5px_rgb(255_255_255_/_0.8)] backdrop-blur">
+          <span className="absolute left-3 top-3 z-10 rounded-md border border-border bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink">
             {department}
           </span>
         ) : null}
@@ -76,7 +83,7 @@ export default function ProductCard({
             {name}
           </h3>
           {!compact ? (
-            <span className="neu-btn mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full text-secondary group-hover:neu-btn-accent group-hover:text-white">
+            <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-border text-secondary transition-colors group-hover:border-secondary group-hover:bg-secondary group-hover:text-white">
               <ArrowUpRight className="size-4" />
             </span>
           ) : null}

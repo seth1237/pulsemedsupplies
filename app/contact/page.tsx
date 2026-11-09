@@ -6,9 +6,12 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import SectionHeading from '@/components/section-heading'
 import { Button } from '@/components/ui/button'
+import FacebookIcon from '@/components/facebook-icon'
+import Reveal from '@/components/reveal'
 import {
   EMAIL_DISPLAY,
   EMAIL_MAILTO,
+  FACEBOOK_URL,
   PHONE_TEL,
   SUPPORT_PHONE_DISPLAY,
   WHATSAPP_PHONE_DISPLAY,
@@ -18,8 +21,8 @@ import { Clock3, Mail, MessageCircle, Phone } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'Do you supply laboratory equipment in Kenya?',
-    a: 'Yes. Laboratory setup is our focus — analysers, microscopes, autoclaves, and related consumables for Kenyan hospitals and diagnostic centres.',
+    q: 'Which departments do you supply?',
+    a: 'We supply equipment for theatre, ICU, triage, maternity and neonatal, wards, doctor’s rooms, laboratory, radiology, and dental — for single items or full facility setups.',
   },
   {
     q: 'Do you offer bulk discounts?',
@@ -27,11 +30,11 @@ const faqs = [
   },
   {
     q: 'What is your delivery timeframe in Kenya?',
-    a: 'Standard delivery within Kenya is typically 5–7 business days. Rush options are available for urgent laboratory needs.',
+    a: 'Standard delivery within Kenya is typically 5–7 business days. Rush options are available for urgent needs.',
   },
   {
     q: 'Do you provide installation service?',
-    a: 'Yes. We offer professional installation, commissioning, and training for laboratory and clinical equipment. Additional fees may apply.',
+    a: 'Yes. We offer professional installation, commissioning, and training across all the equipment we supply. Additional fees may apply.',
   },
   {
     q: 'What warranty do you offer?',
@@ -61,16 +64,16 @@ export default function Contact() {
       <main>
         <section>
           <Container className="py-14 sm:py-16">
-            <div className="neu-surface rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14">
-              <p className="mb-3 font-display text-sm font-semibold tracking-[0.28em] text-secondary">
-                PULSEMED
+            <div className="neu-surface rounded-2xl px-6 py-10 sm:px-10 sm:py-14">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
+                Contact
               </p>
               <h1 className="max-w-4xl font-display text-4xl font-semibold tracking-tight text-ink text-balance sm:text-5xl">
                 Talk with our Kenya team
               </h1>
               <p className="mt-4 max-w-3xl text-base text-muted-foreground sm:text-lg">
-                Laboratory setups, equipment quotes, installation, or partnership conversations —
-                we support hospitals and diagnostic labs across Kenya.
+                Equipment quotes, department setups, installation, or partnership conversations —
+                we support hospitals, clinics, and diagnostic centres across Kenya.
               </p>
             </div>
           </Container>
@@ -125,6 +128,25 @@ export default function Contact() {
                     ),
                   },
                   {
+                    icon: FacebookIcon,
+                    title: 'Facebook',
+                    body: (
+                      <>
+                        <a
+                          href={FACEBOOK_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-lg font-semibold text-ink transition hover:text-[#1877F2]"
+                        >
+                          Pulsemed Solutions Limited
+                        </a>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          Follow us for new equipment and updates
+                        </p>
+                      </>
+                    ),
+                  },
+                  {
                     icon: Clock3,
                     title: 'Service Hours',
                     body: (
@@ -135,18 +157,18 @@ export default function Contact() {
                       </>
                     ),
                   },
-                ].map((item) => (
-                  <div key={item.title} className="neu-surface rounded-2xl p-6">
+                ].map((item, index) => (
+                  <Reveal key={item.title} delay={index * 70} className="neu-surface rounded-2xl p-6">
                     <div className="mb-3 flex items-center gap-2 text-secondary">
                       <item.icon className="size-4" />
                       <h3 className="text-sm font-semibold uppercase tracking-wider">{item.title}</h3>
                     </div>
                     {item.body}
-                  </div>
+                  </Reveal>
                 ))}
               </div>
 
-              <form onSubmit={handleSubmit} className="neu-surface rounded-[1.75rem] p-6 sm:p-8 lg:p-10">
+              <form onSubmit={handleSubmit} className="neu-surface rounded-2xl p-6 sm:p-8 lg:p-10">
                 <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
                   Send a message
                 </h2>
@@ -221,13 +243,13 @@ export default function Contact() {
           <Container>
             <SectionHeading eyebrow="FAQ" title="Common questions" className="mb-8" />
             <div className="grid gap-4 md:grid-cols-2">
-              {faqs.map((item) => (
-                <div key={item.q} className="neu-surface rounded-2xl p-6">
+              {faqs.map((item, index) => (
+                <Reveal key={item.q} delay={(index % 2) * 90} className="neu-surface rounded-2xl p-6">
                   <h3 className="font-display text-lg font-semibold tracking-tight text-ink">
                     {item.q}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </Container>

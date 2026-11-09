@@ -72,7 +72,7 @@ export default function ProductDetailClient({
         <section className="py-8 sm:py-12">
           <Container>
             <div className="grid gap-6 lg:grid-cols-2">
-              <div className="neu-surface relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#eef3f8] via-[#e8eef6] to-[#dde6f0] sm:aspect-square">
+              <div className="neu-surface relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-square">
                 {product.image ? (
                   <Image
                     src={product.image}
@@ -91,7 +91,7 @@ export default function ProductDetailClient({
                 )}
               </div>
 
-              <div className="neu-surface flex flex-col justify-center rounded-[2rem] p-6 sm:p-8 lg:p-10">
+              <div className="neu-surface flex flex-col justify-center rounded-2xl p-6 sm:p-8 lg:p-10">
                 <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
                   {product.department}
                 </p>
@@ -129,7 +129,7 @@ export default function ProductDetailClient({
             </div>
 
             {product.specs ? (
-              <div className="neu-surface mt-6 rounded-[2rem] p-6 sm:p-8 lg:p-10">
+              <div className="neu-surface mt-6 rounded-2xl p-6 sm:p-8 lg:p-10">
                 <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
                   Key specifications
                 </h2>

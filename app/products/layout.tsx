@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
-  title: 'Laboratory & Medical Equipment Catalogue Kenya',
+  title: 'Medical Equipment Catalogue Kenya',
   description:
-    'Browse laboratory analysers, microscopes, autoclaves, and hospital equipment for Kenyan hospitals, diagnostic centres, and labs. Request a quote from Pulsemed Solutions Limited.',
+    'Browse medical equipment for every hospital department — theatre, ICU, triage, maternity, wards, laboratory, radiology, and dental. Request a quote from Pulsemed Solutions Limited.',
   alternates: { canonical: '/products' },
   openGraph: {
-    title: 'Laboratory Equipment Catalogue | Pulsemed Kenya',
+    title: 'Medical Equipment Catalogue | Pulsemed Kenya',
     description:
-      'Lab and medical equipment for Kenyan healthcare facilities — analysers, microscopes, sterilisation, ICU, and more.',
+      'Hospital equipment for Kenyan healthcare facilities across theatre, ICU, triage, maternity, wards, laboratory, radiology, and dental.',
     url: '/products',
   },
 }

@@ -44,20 +44,10 @@ export async function GET(request: Request) {
     const lite = searchParams.get('lite') === '1' || searchParams.get('lite') === 'true'
     const limitRaw = Number(searchParams.get('limit') || 0)
     const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.floor(limitRaw) : 0
-    const preferLab =
-      searchParams.get('preferLab') === '1' || searchParams.get('preferLab') === 'true'
 
     let products = isErpConfigured()
       ? await applyImageOverrides(await fetchErpProducts(categoryIds))
       : await applyImageOverrides(await fetchLocalProducts())
-
-    if (preferLab) {
-      products = [...products].sort((a, b) => {
-        const aLab = /lab(oratory)?/i.test(a.department) ? 0 : 1
-        const bLab = /lab(oratory)?/i.test(b.department) ? 0 : 1
-        return aLab - bLab
-      })
-    }
 
     if (limit > 0) {
       products = products.slice(0, limit)

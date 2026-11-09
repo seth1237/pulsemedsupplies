@@ -28,7 +28,7 @@ export default function CategorySidebar({
         </h2>
       </div>
 
-      <div className="max-h-[min(70vh,520px)] space-y-2 overflow-y-auto pr-1">
+      <div className="max-h-[min(70vh,520px)] space-y-1 overflow-y-auto pr-1">
         {departments.map((dept) => {
           const active = selected === dept
           return (
@@ -37,17 +37,15 @@ export default function CategorySidebar({
               type="button"
               onClick={() => onSelect(dept)}
               className={cn(
-                'flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-left text-sm font-medium transition-colors',
-                active
-                  ? 'bg-secondary text-white'
-                  : 'bg-[#e8eef5] text-ink hover:bg-[#dfe8f2]',
+                'flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors',
+                active ? 'bg-secondary text-white' : 'text-ink hover:bg-muted',
               )}
             >
-              <span className="pr-2">{dept === 'All' ? 'All Categories' : dept}</span>
+              <span className="pr-2">{dept === 'All' ? 'All Products' : dept}</span>
               <span
                 className={cn(
                   'rounded-md px-1.5 py-0.5 text-[10px] font-bold tabular-nums',
-                  active ? 'bg-white/20 text-white' : 'bg-white/80 text-muted-foreground',
+                  active ? 'bg-white/20 text-white' : 'bg-muted text-muted-foreground',
                 )}
               >
                 {counts[dept] ?? 0}

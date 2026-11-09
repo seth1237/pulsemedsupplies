@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Container from '@/components/container'
+import FacebookIcon from '@/components/facebook-icon'
 import {
   EMAIL_DISPLAY,
   EMAIL_MAILTO,
+  FACEBOOK_URL,
   LOGO_URL,
   PHONE_TEL,
   SUPPORT_PHONE_DISPLAY,
@@ -13,15 +15,14 @@ import {
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products?department=Laboratory', label: 'Lab Equipment' },
-  { href: '/products', label: 'Catalogue' },
+  { href: '/products', label: 'All Products' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 
 const services = [
-  'Laboratory Setup',
   'Equipment Supply',
+  'Facility & Department Setup',
   'Installation & Commissioning',
   'Preventive Maintenance',
 ]
@@ -33,13 +34,20 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-md">
             <div className="mb-5">
-              <div className="relative h-16 w-48 sm:h-[4.5rem] sm:w-56">
-                <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain object-left" />
+              <div className="relative h-24 w-32 sm:h-28 sm:w-36">
+                <Image
+                  src={LOGO_URL}
+                  alt="Pulsemed Solutions Limited"
+                  fill
+                  sizes="144px"
+                  className="object-contain object-left"
+                />
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/70">
-              Laboratory and medical equipment supplier for hospitals and diagnostic centres in Kenya.
-              Installation, commissioning, and biomedical support from Nairobi.
+              Medical equipment supplier for hospitals, clinics, and diagnostic centres in Kenya —
+              across laboratory, ICU, theatre, maternity, dental, radiology, and more. Installation,
+              commissioning, and biomedical support from Nairobi.
             </p>
             <div className="mt-6 space-y-2 text-sm">
               <a
@@ -57,6 +65,15 @@ export default function Footer() {
                 {EMAIL_DISPLAY}
               </a>
             </div>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#1877F2] px-4 py-2.5 text-sm font-semibold text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#166fe0]"
+            >
+              <FacebookIcon className="size-4" />
+              Follow Pulsemed Solutions Limited
+            </a>
           </div>
 
           <div>
@@ -101,11 +118,12 @@ export default function Footer() {
               pulsemedsolutionslimited.co.ke
             </a>
             <a
-              href="https://www.facebook.com/profile.php?id=61590708625873"
+              href={FACEBOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-block text-sm text-white/75 transition hover:text-primary"
+              className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/75 transition hover:text-primary"
             >
+              <FacebookIcon className="size-3.5" />
               Facebook
             </a>
           </div>

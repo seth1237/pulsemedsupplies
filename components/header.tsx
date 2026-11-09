@@ -6,26 +6,21 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { buttonVariants } from '@/components/ui/button'
 import Container from '@/components/container'
-import { LOGO_URL, WHATSAPP_URL } from '@/lib/products'
+import FacebookIcon from '@/components/facebook-icon'
+import { FACEBOOK_URL, LOGO_URL, WHATSAPP_URL } from '@/lib/products'
 import { cn } from '@/lib/utils'
 import { ArrowUpRight, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/products?department=Laboratory', label: 'Lab Equipment' },
-  { href: '/products', label: 'Catalogue' },
+  { href: '/products', label: 'All Products' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 
 function isNavActive(pathname: string, href: string) {
-  const pathOnly = href.split('?')[0]
-  if (pathOnly === '/') return pathname === '/'
-  if (href.includes('department=Laboratory') || href.includes('department=lab')) {
-    return pathname === '/products'
-  }
-  if (pathOnly === '/products') return pathname.startsWith('/products/')
-  return pathname === pathOnly || pathname.startsWith(`${pathOnly}/`)
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
 }
 
 export default function Header() {
@@ -55,10 +50,8 @@ export default function Header() {
     <>
       <header
         className={cn(
-          'sticky top-0 z-50 transition-all duration-300',
-          scrolled || isOpen
-            ? 'border-b border-border/70 bg-[#eef3f8]/95 backdrop-blur-xl'
-            : 'bg-[#eef3f8]/80 backdrop-blur-md',
+          'sticky top-0 z-50 border-b bg-white transition-shadow duration-300',
+          scrolled || isOpen ? 'border-border shadow-sm' : 'border-transparent',
         )}
       >
         <Container>
@@ -66,15 +59,15 @@ export default function Header() {
             <Link href="/" className="relative z-50 flex items-center" onClick={() => setIsOpen(false)}>
               <Image
                 src={LOGO_URL}
-                alt="Pulsemed"
-                width={220}
-                height={88}
-                className="h-12 w-auto sm:h-14"
+                alt="Pulsemed Solutions Limited"
+                width={916}
+                height={748}
+                className="h-14 w-auto transition-transform duration-300 hover:scale-[1.03] sm:h-16"
                 priority
               />
             </Link>
 
-            <div className="hidden items-center gap-1 rounded-2xl bg-white/80 p-1.5 shadow-sm lg:flex">
+            <div className="hidden items-center gap-1 lg:flex">
               {navLinks.map((link) => {
                 const active = isNavActive(pathname, link.href)
                 return (
@@ -82,10 +75,10 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      'rounded-xl px-3.5 py-2 text-sm font-semibold transition-all',
+                      'rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors',
                       active
-                        ? 'bg-[#eef3f8] text-ink'
-                        : 'text-muted-foreground hover:text-ink',
+                        ? 'bg-muted text-ink'
+                        : 'text-muted-foreground hover:bg-muted/60 hover:text-ink',
                     )}
                   >
                     {link.label}
@@ -147,15 +140,15 @@ export default function Header() {
             isOpen ? 'translate-x-0' : 'translate-x-full',
           )}
         >
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -left-16 top-24 h-56 w-56 rounded-full bg-secondary/25 blur-3xl" />
-            <div className="absolute -right-10 bottom-32 h-48 w-48 rounded-full bg-primary/20 blur-3xl" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_18_32)_0%,rgb(15_28_45)_55%,rgb(11_18_32)_100%)]" />
-          </div>
-
           <div className="relative flex h-[4.5rem] items-center justify-between border-b border-white/10 px-5 sm:h-20">
-            <div className="relative h-12 w-40 sm:h-14 sm:w-44">
-              <Image src={LOGO_URL} alt="Pulsemed" fill className="object-contain object-left" />
+            <div className="relative h-14 w-40 sm:h-16 sm:w-44">
+              <Image
+                src={LOGO_URL}
+                alt="Pulsemed Solutions Limited"
+                fill
+                sizes="176px"
+                className="object-contain object-left"
+              />
             </div>
             <button
               type="button"
@@ -216,6 +209,15 @@ export default function Header() {
               >
                 Contact the Team
               </Link>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-transparent text-sm font-semibold text-white transition hover:bg-[#1877F2] hover:border-[#1877F2]"
+              >
+                <FacebookIcon className="size-4" />
+                Follow us on Facebook
+              </a>
               <p className="pt-2 text-center text-xs text-white/40">
                 Pulsemed Solutions Limited
               </p>
