@@ -43,6 +43,7 @@ export function matchesDepartmentFilter(department: string, filter: string): boo
   const normalize = (value: string) =>
     value
       .toLowerCase()
+      .replace(/['’]/g, '')
       .replace(/&/g, ' and ')
       .replace(/[^a-z0-9]+/g, ' ')
       .replace(/\s+/g, ' ')

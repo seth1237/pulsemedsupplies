@@ -18,15 +18,10 @@ export default function CategorySidebar({
   className,
 }: CategorySidebarProps) {
   return (
-    <aside className={cn('neu-surface rounded-2xl p-4 sm:p-5', className)}>
-      <div className="mb-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
-          Categories
-        </p>
-        <h2 className="mt-1 font-display text-lg font-semibold tracking-tight text-ink">
-          Shop by department
-        </h2>
-      </div>
+    <aside className={cn('neu-surface rounded-2xl p-4', className)}>
+      <h2 className="mb-3 px-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+        Departments
+      </h2>
 
       <div className="max-h-[min(70vh,520px)] space-y-1 overflow-y-auto pr-1">
         {departments.map((dept) => {

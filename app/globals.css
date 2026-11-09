@@ -129,6 +129,14 @@
     text-wrap: pretty;
   }
 
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .surface-grid {
     background-image:
       linear-gradient(to right, rgb(15 23 42 / 0.04) 1px, transparent 1px),

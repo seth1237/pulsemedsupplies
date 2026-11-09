@@ -52,7 +52,7 @@ export default function ProductCard({
             className={cn(
               'img-fade object-contain group-hover:scale-[1.04]',
               loaded && 'is-loaded',
-              compact ? 'p-2.5 sm:p-3' : 'p-3 sm:p-4',
+              compact ? 'p-2.5 sm:p-3' : 'p-2.5 sm:p-4',
             )}
             sizes={
               compact
@@ -65,37 +65,36 @@ export default function ProductCard({
             <span className="font-display text-xs font-medium text-muted-foreground">PULSEMED</span>
           </div>
         )}
-        {department && !compact ? (
-          <span className="absolute left-3 top-3 z-10 rounded-md border border-border bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink">
-            {department}
-          </span>
-        ) : null}
       </div>
 
-      <div className={cn('flex flex-1 flex-col', compact ? 'p-2.5 sm:p-3' : 'p-4 sm:p-5')}>
-        <div className={cn('flex items-start justify-between gap-2', compact ? 'mb-0' : 'mb-3')}>
-          <h3
-            className={cn(
-              'font-display font-semibold tracking-tight text-ink line-clamp-2',
-              compact ? 'text-xs sm:text-sm' : 'text-base sm:text-lg',
-            )}
-          >
+      {compact ? (
+        <div className="flex flex-1 flex-col p-2.5 sm:p-3">
+          <h3 className="line-clamp-2 font-display text-xs font-semibold tracking-tight text-ink sm:text-sm">
             {name}
           </h3>
-          {!compact ? (
-            <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-border text-secondary transition-colors group-hover:border-secondary group-hover:bg-secondary group-hover:text-white">
-              <ArrowUpRight className="size-4" />
-            </span>
-          ) : null}
-        </div>
-        {!compact ? (
-          <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
-        ) : (
           <p className="mt-1 line-clamp-1 text-[11px] leading-snug text-muted-foreground">
             {department || description}
           </p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="flex flex-1 flex-col border-t border-border/70 p-3 sm:p-4">
+          {department ? (
+            <p className="mb-1 line-clamp-1 text-[10px] sm:mb-1.5 font-semibold uppercase tracking-[0.14em] text-secondary sm:text-[11px]">
+              {department}
+            </p>
+          ) : null}
+          <h3 className="line-clamp-2 font-display text-sm font-semibold leading-snug tracking-tight text-ink sm:text-[15px]">
+            {name}
+          </h3>
+          <p className="mt-1.5 line-clamp-2 hidden text-xs leading-relaxed text-muted-foreground sm:block sm:text-[13px]">
+            {description}
+          </p>
+          <span className="mt-auto hidden items-center gap-1 pt-3 text-xs font-semibold text-secondary sm:inline-flex">
+            View details
+            <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      )}
     </Link>
   )
 }
